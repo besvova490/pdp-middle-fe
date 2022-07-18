@@ -1,0 +1,9 @@
+.pdp-chat-animated-height {
+  top: 0;
+  overflow: hidden;
+  transition: height .3s ease-in-out;
+
+  &_open {
+    overflow: visible;
+  }
+}

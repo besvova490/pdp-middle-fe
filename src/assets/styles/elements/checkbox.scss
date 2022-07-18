@@ -1,0 +1,92 @@
+@import "../theme.scss";
+
+.pdp-chat-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  grid-column-gap: 8px;
+
+  &__inner {
+    width: 24px;
+    height: 24px;
+    
+    background-color: $white-color-01;
+    box-shadow: 0px 0px 2px 1px $gray-color-05;
+    border-radius: 4px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: $white-color-01;
+
+    cursor: pointer;
+
+    transition: all .2s;
+  }
+
+  &__inner-icon {
+    width: 12px;
+    height: 12px;
+
+    opacity: 0;
+    transition: all .2s;
+  }
+
+  &__tag {
+    display: none;
+  }
+
+  &__label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 100%;
+
+    cursor: pointer;
+  }
+
+  &__error {
+    flex: 0 0 100%;
+    margin-top: 4px;
+    color: $danger-color-01;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  &_checked .pdp-chat-checkbox {
+    &__inner {
+      background-color: $primary-color-01;
+    }
+
+    &__inner-icon {
+      opacity: 1;
+    }
+  }
+
+  &_with-error {
+    flex-wrap: wrap;
+
+    .pdp-chat-checkbox {
+      &__inner {
+        box-shadow: 0px 0px 2px 1px $danger-color-01;
+      }
+    }
+  }
+
+  &_disabled .pdp-chat-checkbox {
+    &__inner {
+      background-color: $gray-color-05;
+      cursor: not-allowed;
+    }
+
+    &__label {
+      opacity: .7;
+      cursor: not-allowed;
+    }
+  }
+}

@@ -1,0 +1,84 @@
+@import "../theme.scss";
+
+// animation
+@keyframes pdp-chat-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.pdp-chat-preloader {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  
+  width: 80px;
+  height: 80px;
+
+  div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: pdp-chat-preloader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+  }
+
+  div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+
+  div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+
+  div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+
+  &_type-primary {
+    div { border-color: $primary-color-01 transparent transparent transparent; }
+  }
+
+  &_type-secondary {
+    div { border-color: $secondary-color-01 transparent transparent transparent; }
+  }
+
+  &_type-danger {
+    div { border-color: $danger-color-01 transparent transparent transparent; }
+  }
+
+  &_type-success {
+    div { border-color: $success-color-01 transparent transparent transparent; }
+  }
+
+  &_size-small {
+    width: 20px;
+    height: 20px;
+
+    div {
+      width: 14px;
+      height: 14px;
+      border-width: 2px;
+    }
+  }
+
+  &_size-middle {
+    width: 48px;
+    height: 48px;
+
+    div {
+      width: 24px;
+      height: 24px;
+      border-width: 4px;
+    }
+  }
+}

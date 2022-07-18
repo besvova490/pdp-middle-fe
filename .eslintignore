@@ -1,0 +1,11 @@
+serviceWorker.ts
+next-env.d.ts
+config/
+scripts/
+build/
+/.next/
+/out/
+node_modules
+jest.config.js
+coverage/
+__mocks__/
