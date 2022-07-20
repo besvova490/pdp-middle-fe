@@ -1,0 +1,60 @@
+@import "../theme.scss";
+
+.pdp-chat-tabs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: max-content;
+
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
+
+  border-radius: 8px;
+  overflow: hidden;
+
+  &__single-tab {
+    padding: 12px 0;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: $dark-color-01;
+
+    min-width: 150px;
+
+    transition: all .2s;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($color: $dark-color-03, $alpha: .1);
+    }
+
+    &_active {
+      color: $white-color-01 !important;
+      background-color: $dark-color-03 !important;
+
+      .pdp-chat-tabs__single-tab-label {
+        border-right: none;
+      }
+    }
+
+    &:last-of-type .pdp-chat-tabs__single-tab-label {
+      border-right: none;
+    }
+
+    &_disabled {
+      opacity: .7;
+      cursor: not-allowed;
+      background-color: transparent !important;
+    }
+  }
+
+  &__single-tab-label {
+    width: 100%;
+    display: inline-block;
+
+    padding: 0 40px;
+    border-right: 1px solid $gray-color-03;
+  }
+}

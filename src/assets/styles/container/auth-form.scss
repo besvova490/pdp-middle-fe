@@ -1,0 +1,108 @@
+@import "../theme.scss";
+
+.pdp-chat-auth-card {
+  font-family: 'Poppins';
+  font-style: normal;
+
+  padding: 30px 40px;
+
+  background-color: $white-color-01;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+
+  width: max-content;
+  max-width: 400px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  grid-gap: 20px;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  
+    grid-gap: 16px;
+  }
+
+  &__header-title {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    color: $dark-color-02;
+
+    text-align: center;
+
+  }
+
+  &__header-subtitle {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.02em;
+
+    padding: 0 20px;
+  }
+}
+
+.pdp-chat-auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  grid-gap: 16px;
+
+  width: 300px;
+
+  &__info-text {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: $dark-color-03;
+
+    width: 300px;
+    margin-top: 16px;
+  }
+
+  &__footer-message {
+    padding: 7px 12px;
+    margin-top: 12px;
+
+    display: block;
+
+    background: $gray-color-06;
+    border-radius: 24px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: right;
+    letter-spacing: 0.02em;
+
+    color: $dark-color-02;
+  }
+
+  &__success-block {
+    width: 132px;
+    height: 132px;
+
+    margin: 20px auto;
+  }
+
+  a {
+    color: $secondary-color-01;
+  }
+}

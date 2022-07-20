@@ -26,7 +26,9 @@ function Button(props: ButtonInterface) {
     secondary,
     shape = "default",
     type = "default",
+    htmlType = "button",
     fullWidth,
+    isDefault,
     ...rest
   } = props;
 
@@ -41,6 +43,7 @@ function Button(props: ButtonInterface) {
       "pdp-chat-button_type-danger": !!danger,
       "pdp-chat-button_type-success": !!success,
       "pdp-chat-button_type-secondary": !!secondary,
+      "pdp-chat-button_type-is-default": !!isDefault,
       "pdp-chat-button_full-width": !!fullWidth,
     }
   );
@@ -83,6 +86,7 @@ function Button(props: ButtonInterface) {
   return (
     <button
       { ...rest }
+      type={htmlType}
       className={buttonClassName}
       onClick={e => !disabled && onClick && onClick(e)}
     >

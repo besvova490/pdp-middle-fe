@@ -10,6 +10,7 @@ interface BaseInputInterface {
   value?: string;
   defaultValue?: string;
   fullWidth?: boolean;
+  name?: string;
 }
 
 export interface TextareaInterface
@@ -20,4 +21,5 @@ extends BaseInputInterface, Omit<DetailedHTMLProps<HTMLAttributes<HTMLInputEleme
   icon?: ReactNode;
   allowClear?: boolean;
   Textarea?: React.FC;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

@@ -2,7 +2,23 @@
 
 .pdp-chat-dropdown {
   width: max-content;
-  display: inline-block;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  grid-gap: 4px;
+
+  &__arrow-icon {
+    width: 12px;
+    height: 12px;
+
+    color: $gray-color-02;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
 
   &__menu {
     width: max-content;

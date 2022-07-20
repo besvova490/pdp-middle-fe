@@ -10,6 +10,7 @@ extends DetailedHTMLProps<HTMLAttributes<HTMLButtonElement>, HTMLButtonElement> 
   success?: boolean;
   primary?: boolean;
   secondary?: boolean;
+  isDefault?: boolean;
   icon?: ReactNode;
   loading?: boolean;
   fullWidth?: boolean;

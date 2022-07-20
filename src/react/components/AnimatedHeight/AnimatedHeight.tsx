@@ -18,30 +18,35 @@ function AnimatedHeight(props: AnimatedHeightInterface) {
     ...rest
   } = props;
 
+  const [isOpen, setIsOpen] = useState(false);
   const [height, setHeight] = useState(initialHeight);
   
   const ref = useRef<HTMLDivElement>(null);
   const elementHeight = ref.current ? ref.current.scrollHeight : 0;
 
   useEffect(() => {
+    if (typeof visible !== "undefined") {
+      setIsOpen(visible);
+    }
+  }, [visible]);
+  
+  useEffect(() => {
     if (!ref.current) return;
 
-    console.log({ height, initialHeight })
-
-    if (visible && height !== "auto") {
+    if (isOpen && height !== "auto") {
       return setHeight(`${elementHeight}px`);
     }
 
-    if (!visible && height === "auto") {
+    if (!isOpen && height === "auto") {
       setHeight(`${elementHeight}px`);
-    } else if (!visible && height === `${elementHeight}px`) {
+    } else if (!isOpen && height === `${elementHeight}px`) {
       setHeight(initialHeight);
     }
-  }, [visible, height]);
+  }, [isOpen, height]);
 
 
   const handleTransitionEnd = () => {
-    if (visible && height !== initialHeight) {
+    if (isOpen && height !== initialHeight) {
       setHeight("auto");
     }
   }

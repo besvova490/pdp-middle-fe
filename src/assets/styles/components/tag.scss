@@ -1,0 +1,70 @@
+@import "../theme.scss";
+
+@mixin tagState($backgroundColor, $hoveredBackgroundColor, $color: $white-color-01) {
+  background-color: $backgroundColor;
+  color: $color;
+
+  &:hover {
+    background-color: $hoveredBackgroundColor;
+  }
+}
+
+.pdp-chat-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  grid-gap: 5px;
+
+  padding: 7px 10px;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+
+  color: $dark-color-02;
+  background-color: $gray-color-06;
+  border-radius: 15px;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: $gray-color-05;
+  }
+
+  &_disabled {
+    cursor: not-allowed;
+    opacity: .7;
+
+    @include tagState($gray-color-06, $gray-color-06, $dark-color-02);
+  }
+
+  &_type-secondary {
+    @include tagState($secondary-color-02, $secondary-color-01);
+  }
+
+  &_type-success {
+    @include tagState(rgba($color: $success-color-01, $alpha: .8), $success-color-01);
+  }
+
+  &_type-danger {
+    @include tagState(rgba($color: $danger-color-01, $alpha: .8), $danger-color-01);
+  }
+
+  &_type-primary {
+    @include tagState($primary-color-02, $primary-color-01);
+  }
+
+  &__close-icon {
+    width: 12px;
+    height: 12px;
+
+    color: inherit;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
