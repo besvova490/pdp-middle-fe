@@ -1,13 +1,14 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 // components
+import ElementsList from "../ElementsList";
 import Dropdown from "../../react/components/Dropdown";
 
 
 const OPTIONS = [
-  { label: "Option 1", value: "Option 1" },
-  { label: "Option 2", value: "Option 2" },
-  { label: "Option 3", value: "Option 3" },
+  { label: "1st menu item", value: "1st menu item" },
+  { label: "2nd menu item", value: "2nd menu item" },
+  { label: "3rd menu item", value: "3rd menu item" },
 ];
 
 export default {
@@ -20,6 +21,23 @@ const Template: ComponentStory<typeof Dropdown> = (args) => (
     <Dropdown { ...args }/>
   </div>
 );
+
+const TemplatePositions = () => (
+  <div className="storybook-gray-background">
+    <ElementsList isRow>
+      <Dropdown options={OPTIONS} placement="bottom">bottom</Dropdown>
+      <Dropdown options={OPTIONS} placement="bottomLeft">bottomLeft</Dropdown>
+      <Dropdown options={OPTIONS} placement="bottomRight">bottomRight</Dropdown>
+    </ElementsList>
+    <ElementsList isRow>
+      <Dropdown options={OPTIONS} placement="top">top</Dropdown>
+      <Dropdown options={OPTIONS} placement="topLeft">topLeft</Dropdown>
+      <Dropdown options={OPTIONS} placement="topRight">topRight</Dropdown>
+    </ElementsList>
+  </div>
+);
+
+export const AllMenuPositions = TemplatePositions.bind({});
 
 export const Default = Template.bind({});
 Default.args = {

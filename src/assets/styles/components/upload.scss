@@ -1,0 +1,33 @@
+@import "../theme.scss";
+
+
+.pdp-chat-upload {
+  &__controls-input {
+    display: none;
+  }
+
+  &__controls {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    border-radius: 4px;
+    
+    background-color: $gray-color-06;
+    color: rgba($color: $gray-color-03, $alpha: .5);
+
+    transition: all .2s;
+
+    cursor: pointer;
+
+    &:hover {
+      color: rgba($color: $gray-color-03, $alpha: 1);
+    }
+  }
+
+  &__controls-icon {
+    width: 32px;
+    height: 32px;
+  }
+}

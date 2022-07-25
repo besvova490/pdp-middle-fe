@@ -11,13 +11,14 @@ import Button from "../../elements/Button";
 
 // helpers
 import { loginAuthSchema } from "../../../helpers/validationSchemas";
-import AuthFormInterface, { LoginFormDataInterface } from "../../../__types__/containers/AuthForm.types";
+import { LoginFormDataInterface } from "../../../__types__/containers/AuthForm.types";
+import { BaseFormInterface } from "../../../__types__/base.type";
 
 // assets
 import Logo from "../../icons/Logo";
 
 
-function LoginForm({ onSubmit, onError }: AuthFormInterface<LoginFormDataInterface>) {
+function LoginForm({ onSubmit, onError }: BaseFormInterface<LoginFormDataInterface>) {
 
   const { handleSubmit, watch, setValue, formState: { errors } } = useForm<LoginFormDataInterface>({
     defaultValues: {

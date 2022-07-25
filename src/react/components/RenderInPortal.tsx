@@ -8,7 +8,7 @@ import RenderInPortalInterface from "../../__types__/components/RenderInPortal.t
 function RenderInPortal({ children, className = "", style = {} }: RenderInPortalInterface) {
   const [elements] = useState(() => {
     const wrapperElement = document.createElement("div");
-    wrapperElement.classList.add(className);
+    className && wrapperElement.classList.add(className);
 
     return {
       el: wrapperElement,

@@ -13,5 +13,6 @@ export default interface DropdownInterface extends DetailedHTMLProps<HTMLAttribu
   options?: Array<DropdownOptionInterface>;
   defaultVisible?: boolean;
   arrow?: boolean;
+  placement?: "bottom" | "bottomLeft" | "bottomRight" | "top" | "topLeft" | "topRight";
   renderArrow?: (isOpen: boolean) => ReactNode | Array<ReactNode>;
 }

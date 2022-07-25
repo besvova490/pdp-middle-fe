@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaChevronDown } from "react-icons/fa";
 
 // components
@@ -31,11 +31,15 @@ function Dropdown(props: DropdownInterface) {
     defaultVisible,
     arrow = true,
     renderArrow,
+    className = "",
+    placement,
     ...rest
   } = props;
 
   const [isMenuVisible, setIsMenuVisible] = useState(!!visible || !!defaultVisible);
   const [position, setPosition] = useState<PositionOfElement | null>(null);
+
+  const ref = useRef<HTMLUListElement | null>(null);
 
 
   useEffect(() => {
@@ -47,6 +51,30 @@ function Dropdown(props: DropdownInterface) {
   const handleToggleVisible = (e: boolean) => {
     setIsMenuVisible(e);
   }
+
+  const getPlacement = () => {
+    if (!position) return {};
+
+    const optionsHeight = ref.current?.getBoundingClientRect().height || 0;
+    const optionsWidth = ref.current?.getBoundingClientRect().width || 0;
+
+    switch (placement) {
+      case "top":
+        return { top: `${position.top - optionsHeight}px`, left: `${((position.left + (position.width / 2)) - (optionsWidth / 2))}px` };
+      case "topLeft":
+        return { top: `${position.top - optionsHeight}px`, left: `${position.left}px` };
+      case "topRight":
+        return { top: `${position.top - optionsHeight}px`, right: `calc(100% - ${position.right}px)` };
+      case "bottom":
+        return { top: `${position.top + position.height}px`, left: `${((position.left + (position.width / 2)) - (optionsWidth / 2))}px` };
+      case "bottomLeft":
+        return { top: `${position.top + position.height}px`, left: `${position.left}px` };
+      case "bottomRight":
+        return { top: `${position.top + position.height}px`, right: `calc(100% - ${position.right}px)` };
+      default:
+        return { top: `${position.bottom}px`, left: `${position.left}px` };
+    }
+  }
   
 
   return (
@@ -55,7 +83,7 @@ function Dropdown(props: DropdownInterface) {
       ref={el => !position && el && setPosition(el.getBoundingClientRect())}
       onMouseOver={() => handleToggleVisible(true)}
       onMouseLeave={() => handleToggleVisible(false)}
-      className="pdp-chat-dropdown"
+      className={`pdp-chat-dropdown ${className}`}
     >
       { children }
       {
@@ -69,13 +97,10 @@ function Dropdown(props: DropdownInterface) {
       <RenderInPortal
         key={JSON.stringify(position)}
         className="pdp-chat-dropdown__menu"
-        style={position
-          ? { top: `${position.bottom + 2}px`, left: `${position.left}px` }
-          : {}
-        }
+        style={getPlacement()}
       >
         <AnimatedHeight visible={isMenuVisible}>
-          <ul className="pdp-chat-dropdown__menu-list">
+          <ul className="pdp-chat-dropdown__menu-list" ref={ref}>
             { options.map((item, index) => (
               <li
                 className="pdp-chat-dropdown__menu-list-item"

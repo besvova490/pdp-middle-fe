@@ -1,0 +1,144 @@
+@import "../theme.scss";
+
+.pdp-chat-post {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  width: 550px;
+
+  background: $white-color-01;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  letter-spacing: 0.02em;
+  color: $dark-color-02;
+
+  &__header {
+    padding: 12px 16px;
+  }
+
+  &__header-author {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    grid-gap: 8px;
+  }
+
+  &__header-author-avatar-image {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+  }
+
+  &__header-post-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    grid-gap: 4px;
+  }
+
+  &__header-post-info-author {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  &__header-post-info-date {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    color: $gray-color-02;
+  }
+
+  &__header-post-info-location {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+    color: $secondary-color-02;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    grid-gap: 4px;
+  }
+
+  &__header-post-info-location-icon {
+    width: 16px;
+    height: 16px;
+
+    color: $secondary-color-02;
+  }
+
+  &__body {
+    padding-top: 8px;
+    padding-bottom: 16px;
+  }
+
+  &__description {
+    padding: 8px 16px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  &__thumbnail {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  &__thumbnail-image {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 8px;
+
+    width: 100%;
+  }
+
+  &__footer-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    grid-gap: 8px;
+
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 19px;
+
+    cursor: pointer;
+    transition: all .2s;
+
+    &:hover {
+      color: $secondary-color-02;
+    }
+  }
+
+  &__footer-item-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  &__info {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    padding: 0 16px 8px;
+    color: $gray-color-02;
+  }
+}

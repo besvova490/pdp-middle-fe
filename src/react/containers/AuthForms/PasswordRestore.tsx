@@ -10,10 +10,11 @@ import Button from "../../elements/Button";
 
 // helpers
 import { restorePassword } from "../../../helpers/validationSchemas";
-import AuthFormInterface, { RestorePasswordInterface } from "../../../__types__/containers/AuthForm.types";
+import { RestorePasswordInterface } from "../../../__types__/containers/AuthForm.types";
+import { BaseFormInterface } from "../../../__types__/base.type";
 
 
-function PasswordRestore({ onSubmit, onError }: AuthFormInterface<RestorePasswordInterface>) {
+function PasswordRestore({ onSubmit, onError }: BaseFormInterface<RestorePasswordInterface>) {
 
   const { handleSubmit, watch, setValue, formState: { errors } } = useForm<RestorePasswordInterface>({
     defaultValues: {

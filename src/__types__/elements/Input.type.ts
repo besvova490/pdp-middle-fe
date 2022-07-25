@@ -14,7 +14,9 @@ interface BaseInputInterface {
 }
 
 export interface TextareaInterface
-extends BaseInputInterface, Omit<DetailedHTMLProps<HTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>, "defaultValue"> {}
+extends BaseInputInterface, Omit<DetailedHTMLProps<HTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>, "defaultValue"> {
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}
 
 export default interface InputInterface
 extends BaseInputInterface, Omit<DetailedHTMLProps<HTMLAttributes<HTMLInputElement>, HTMLInputElement>, "defaultValue"> {

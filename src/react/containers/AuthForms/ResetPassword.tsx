@@ -11,14 +11,14 @@ import Button from "../../elements/Button";
 
 // helpers
 import { emailValidation } from "../../../helpers/validationSchemas";
-import AuthFormInterface, { ResetFormDataInterface } from "../../../__types__/containers/AuthForm.types";
-
+import { ResetFormDataInterface } from "../../../__types__/containers/AuthForm.types";
+import { BaseFormInterface } from "../../../__types__/base.type";
 
 const validation = yup.object({
   email: emailValidation,
 });
 
-function ResetPassword({ onSubmit, onError }: AuthFormInterface<ResetFormDataInterface>) {
+function ResetPassword({ onSubmit, onError }: BaseFormInterface<ResetFormDataInterface>) {
 
   const { handleSubmit, watch, setValue, formState: { errors } } = useForm<ResetFormDataInterface>({
     defaultValues: {

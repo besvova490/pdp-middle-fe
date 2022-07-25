@@ -3,7 +3,7 @@
 
 .pdp-chat-button {
   width: max-content;
-  padding: 6px;
+  padding: 6px 12px;
 
   display: flex;
   align-items: center;
@@ -12,7 +12,7 @@
 
   border: 1px solid transparent;
   background-color: $primary-color-01;
-  color: $white-color-01 !important;
+  color: $white-color-01;
 
   font-weight: 400;
   font-size: 14px;
@@ -93,51 +93,44 @@
   }
 
   &_type-primary {
-    background-color: transparent;
-    border-color: $primary-color-01;
+    background-color: rgba($color: $primary-color-01, $alpha: .2);
     color: $primary-color-01;
 
     &:hover {
-      background-color: transparent;
-      border-color: $primary-color-02;
+      background-color: rgba($color: $primary-color-01, $alpha: .3);
     } 
 
     &.pdp-chat-button {
       &_type-secondary {
-        background-color: transparent;
-        border-color: $secondary-color-01;
+        background-color: rgba($color: $secondary-color-01, $alpha: .2);
         color: $secondary-color-01;
 
         &:hover {
-          background-color: transparent;
-          border-color: $secondary-color-02;
+          background-color: rgba($color: $secondary-color-01, $alpha: .3);
         } 
       }
 
       &_type-danger {
-        background-color: transparent;
-        border-color: $danger-color-01;
+        background-color: rgba($color: $danger-color-01, $alpha: .2);
         color: $danger-color-01;
 
         &:hover {
-          background-color: transparent;
+          background-color: rgba($color: $danger-color-01, $alpha: .3);
         } 
       }
 
       &_type-success {
-        background-color: transparent;
-        border-color: $success-color-01;
+        background-color: rgba($color: $success-color-01, $alpha: .2);
         color: $success-color-01;
 
         &:hover {
-          background-color: transparent;
+          background-color: rgba($color: $success-color-01, $alpha: .3);
         } 
       }
 
       &_disabled {
-        background-color: transparent;
+        background-color: rgba($color: $gray-color-03, $alpha: .2);
         color: $gray-color-03;
-        border-color: $gray-color-03;
       }
     }
   }

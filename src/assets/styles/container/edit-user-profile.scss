@@ -1,0 +1,255 @@
+@import "../theme.scss";
+
+.pdp-chat-edit-user-profile {
+  font-family: 'Poppins';
+  font-style: normal;
+  letter-spacing: 0.02em;
+  background-color: $white-color-01;
+
+  &__header {
+    padding: 10px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid $gray-color-05;
+  }
+
+  &__header-go-back {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    grid-gap: 8px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    color: $dark-color-02;
+  }
+
+  &__header-go-back-icon {
+    opacity: .8;
+    transition: all .2s;
+    
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__body {
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    grid-gap: 16px;
+  }
+  
+  &__body-row {
+    width: 100%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    grid-gap: 16px;
+  }
+
+  &__body-row-title {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 17px;
+    color: #1C1F29;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    grid-gap: 8px;
+  }
+
+  &__body-row-title-icon {
+    color: $gray-color-03;
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 100%;
+
+    grid-gap: 8px;
+  }
+
+  &__location-icon {
+    color: $gray-color-01;
+  }
+
+  &__body-row-edit {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba($color: $secondary-color-02, $alpha: .7);
+    transition: all .2s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: auto;
+
+    cursor: pointer;
+
+    color: rgba($color: $secondary-color-02, $alpha: .7);
+
+    &:hover {
+      border-color: $secondary-color-02;
+      color: $secondary-color-02;
+    }
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+.pdp-chat-edit-user-profile-photos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 20px;
+  padding: 0 20px;
+
+  &__thumbnail {
+    border-radius: 6px;
+    overflow: hidden;
+
+    height: 200px;
+    width: 100%;
+
+    position: relative;
+  }
+
+  &__thumbnail-image {
+    object-position: cover;
+    object-position: center center;
+
+    width: 100%;
+    height: auto;
+  }
+
+  &__thumbnail-upload {
+    width: 100%;
+    height: 100%;
+
+    .pdp-chat-upload__controls {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__avatar {
+    width: 80px;
+    height: 80px;
+
+    position: relative;
+
+    border-radius: 50%;
+    border: 3px solid $white-color-01;
+
+    margin-top: -50px;
+  }
+
+  &__avatar-image {
+    object-fit: cover;
+
+    width: 100%;
+    height: auto;
+
+    border-radius: 50%;
+  }
+
+  &__edit {
+    position: absolute;
+
+    justify-content: center;
+
+    top: -4px;
+    right: -4px;
+
+    z-index: 99;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+    background-color: $secondary-color-02;
+    color: $white-color-01;
+
+    &_thumbnail {
+      top: 10px;
+      right: 10px;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__avatar-image-upload {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__edit-option {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 17px;
+
+    color: $dark-color-02;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    grid-gap: 8px;
+
+    svg {
+      color: $gray-color-02;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__error {
+    display: inline-block;
+    width: 100%;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #EA3C24;
+
+    margin-top: 4px;
+    text-align: left;
+  }
+
+  &_with-error {
+    .pdp-chat-edit-user-profile-photos__thumbnail {
+      border: 1px solid #EA3C24;
+    }
+  }
+}

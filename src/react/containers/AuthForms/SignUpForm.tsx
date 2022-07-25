@@ -11,13 +11,14 @@ import AuthFormCard from "./AuthFormCard";
 
 // helpers
 import { signUpAuthSchema } from "../../../helpers/validationSchemas";
-import AuthFormInterface, { SignUpDataInterface } from "../../../__types__/containers/AuthForm.types";
+import { SignUpDataInterface } from "../../../__types__/containers/AuthForm.types";
+import { BaseFormInterface } from "../../../__types__/base.type";
 
 // assets
 import Logo from "../../icons/Logo";
 
 
-function AuthForm({ onSubmit, onError }: AuthFormInterface<SignUpDataInterface>) {
+function AuthForm({ onSubmit, onError }: BaseFormInterface<SignUpDataInterface>) {
 
   const { handleSubmit, watch, setValue, formState: { errors } } = useForm<SignUpDataInterface>({
     defaultValues: {
