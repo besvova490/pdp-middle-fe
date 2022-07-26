@@ -1,0 +1,56 @@
+@import "../../theme.scss";
+
+
+.pdp-chat-message {
+  font-family: 'Poppins';
+  font-style: normal;
+  letter-spacing: 0.01em;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  grid-gap: 8px;
+
+  &__body-main {
+    background: $gray-color-06;
+    border-radius: 16px 16px 16px 0px;
+
+    padding: 6px 10px;
+    margin-bottom: 6px;
+  }
+
+  &__body-author {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+
+    margin-bottom: 4px;
+  }
+
+  &__body-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  &__body-date {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    color: $gray-color-03;
+  }
+
+  &__avatar {
+    margin-top: auto;
+    margin-bottom: 18px;
+  }
+
+  &_ovn .pdp-chat-message {
+    &__body-main {
+      color: $white-color-01;
+      background: $secondary-color-01;
+      border-radius: 16px 16px 0px 16px;
+    }
+  }
+}

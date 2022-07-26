@@ -28,7 +28,7 @@ function Drawer({ visible, onClose, children }: DrawerInterface) {
     <RenderInPortal style={{ position: "absolute" }}>
       <div className={drawerClassName} tabIndex={visible ? 0 : -1}>
         <div className="pdp-chat-drawer__content" ref={ref}>
-          { children }
+          { visible ? children : null }
         </div>
       </div>
     </RenderInPortal>

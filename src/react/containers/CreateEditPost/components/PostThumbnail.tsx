@@ -1,10 +1,10 @@
 import { MdDeleteOutline } from "react-icons/md";
 
 // components
-import Upload from "../../components/Upload";
+import Upload from "../../../components/Upload";
 
 // helpers
-import classNames from "../../../helpers/classNames";
+import classNames from "../../../../helpers/classNames";
 
 
 function PostThumbnail({ thumbnailSrc, error }: { thumbnailSrc?: string, error?: string }) {

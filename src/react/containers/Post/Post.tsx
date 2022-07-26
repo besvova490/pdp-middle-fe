@@ -27,7 +27,7 @@ function Post(props: PostReachInterface) {
     createdAt,
   } = props;
 
-  const daysCount = dayjs("2022-06-29").fromNow();
+  const daysCount = dayjs(createdAt).fromNow();
 
 
   return (
@@ -41,7 +41,11 @@ function Post(props: PostReachInterface) {
           />
           <div className="pdp-chat-post__header-post-info">
             <span className="pdp-chat-post__header-post-info-author">{author.userName}</span>
-            <span className="pdp-chat-post__header-post-info-date">added a photo &#9679; {daysCount}</span>
+            {
+              createdAt
+                ? <span className="pdp-chat-post__header-post-info-date">added a photo &#9679; {daysCount}</span>
+                : null
+            }
             {
               location
                 ? (

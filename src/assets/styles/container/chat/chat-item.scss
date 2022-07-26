@@ -1,0 +1,111 @@
+@import "../../theme.scss";
+
+
+.pdp-chat-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  grid-gap: 10px;
+
+  font-family: 'Poppins';
+  font-style: normal;
+  letter-spacing: 0.01em;
+  color: $dark-color-02;
+
+  background-color: $white-color-01;
+  padding: 8px 16px;
+
+  transition: all .2s;
+  cursor: pointer;
+
+  &__avatar {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__avatar-image {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    grid-gap: 4px;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+
+    color: $dark-color-02;
+  }
+
+  &__info-username {
+    font-weight: 500;
+    line-height: 13px;
+    font-size: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    grid-gap: 4px;
+  }
+
+  &__info-username-online {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+
+    background-color: $primary-color-02;
+  }
+
+  &__info-date {
+    color: $gray-color-04;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__controls {
+    margin-left: auto;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    transition: all .2s;
+    cursor: pointer;
+
+    color: $gray-color-04;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: $secondary-color-02;
+      color: $white-color-01;
+    }
+  }
+
+  &__controls-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    background-color: $gray-color-06;
+  }
+}

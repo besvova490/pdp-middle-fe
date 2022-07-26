@@ -1,11 +1,11 @@
 import { MdOutlineModeEditOutline, MdDeleteOutline } from "react-icons/md";
 
 // components
-import Upload from "../../components/Upload";
-import Dropdown from "../../components/Dropdown";
+import Upload from "../../../components/Upload";
+import Dropdown from "../../../components/Dropdown";
 
 // helpers
-import { UserThumbnailInterface } from "../../../__types__/containers/EditUserProfile.types";
+import { UserThumbnailInterface } from "../../../../__types__/containers/EditUserProfile.types";
 
 const OPTIONS_LIST = [
   { label: <div className="pdp-chat-edit-user-profile-photos__edit-option"><MdOutlineModeEditOutline/><span>Change photo</span></div>, value: "changePhoto" },

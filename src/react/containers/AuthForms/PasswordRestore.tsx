@@ -2,7 +2,7 @@ import { useForm, FieldErrorsImpl } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 // components
-import AuthFormCard from "./AuthFormCard";
+import AuthFormCard from "./components/AuthFormCard";
 
 // elements
 import { PasswordInput } from "../../elements/Input";
@@ -12,6 +12,9 @@ import Button from "../../elements/Button";
 import { restorePassword } from "../../../helpers/validationSchemas";
 import { RestorePasswordInterface } from "../../../__types__/containers/AuthForm.types";
 import { BaseFormInterface } from "../../../__types__/base.type";
+
+// assets
+import "../../../assets/styles/container/auth-form.scss";
 
 
 function PasswordRestore({ onSubmit, onError }: BaseFormInterface<RestorePasswordInterface>) {

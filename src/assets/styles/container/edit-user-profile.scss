@@ -6,6 +6,14 @@
   letter-spacing: 0.02em;
   background-color: $white-color-01;
 
+  height: 100vh;
+  padding-bottom: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: auto;
+
   &__header {
     padding: 10px 20px;
 
@@ -42,6 +50,8 @@
   }
 
   &__body {
+    flex: 1 1 auto;
+
     padding: 20px;
 
     display: flex;

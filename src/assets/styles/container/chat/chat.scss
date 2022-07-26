@@ -1,0 +1,110 @@
+@import "../../theme.scss";
+
+
+.pdp-chat {
+  font-family: 'Poppins';
+  font-style: normal;
+  letter-spacing: 0.02em;
+  background-color: $white-color-01;
+
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  &__header {
+    padding: 10px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid $gray-color-05;
+  }
+
+  &__header-go-back {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    grid-gap: 4px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    color: $dark-color-02;
+  }
+
+  &__header-go-back-icon {
+    opacity: .8;
+    transition: all .2s;
+
+    width: 18px;
+    height: 18px;
+    
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__body {
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  &__chats-list {
+    margin-top: 20px;
+
+    .pdp-chat-item {
+      border-bottom: 1px solid $gray-color-06;
+    }
+  }
+
+  &__empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    grid-gap: 26px;
+
+    height: 100%;
+  }
+
+  &__empty-state-label {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    color: $gray-color-05;
+  }
+
+  &__body-search {
+    padding: 20px 20px 0;
+  }
+
+  &__messages-list {
+    padding: 16px;
+
+    display: grid;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    grid-gap: 12px;
+
+    flex: 1 1 auto;
+    overflow: auto;
+  }
+
+  &__direct {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__messages-list-input {
+    border-top: 1px solid $gray-color-06;
+  }
+}

@@ -7,7 +7,7 @@ import Input, { PasswordInput } from "../../elements/Input";
 import Button from "../../elements/Button";
 
 // components
-import AuthFormCard from "./AuthFormCard";
+import AuthFormCard from "./components/AuthFormCard";
 
 // helpers
 import { signUpAuthSchema } from "../../../helpers/validationSchemas";

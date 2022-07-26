@@ -1,5 +1,4 @@
 import { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react";
-import { FieldErrorsImpl } from "react-hook-form";
 
 
 export interface ResetFormDataInterface {

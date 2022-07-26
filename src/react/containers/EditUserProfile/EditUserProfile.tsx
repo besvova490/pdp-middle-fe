@@ -4,7 +4,7 @@ import { useForm, FieldErrorsImpl } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 // components
-import UserThumbnail from "./UserThumbnail";
+import UserThumbnail from "./components/UserThumbnail";
 
 // helpers
 import { editUserProfileValidation } from "../../../helpers/validationSchemas";

@@ -1,9 +1,9 @@
 // helpers
-import classNames from "../../../helpers/classNames";
-import { AuthFormCardInterface } from "../../../__types__/containers/AuthForm.types";
+import classNames from "../../../../helpers/classNames";
+import { AuthFormCardInterface } from "../../../../__types__/containers/AuthForm.types";
 
 // assets
-import "../../../assets/styles/container/auth-form.scss";
+import "../../../../assets/styles/container/auth-form.scss";
 
 function AuthFormCard({ className = "", children, icon, title, footer, subtitle, ...rest }: AuthFormCardInterface) {
 

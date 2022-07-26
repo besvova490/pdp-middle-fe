@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 // components
-import AuthFormCard from "./AuthFormCard";
+import AuthFormCard from "./components/AuthFormCard";
 
 // elements
 import Input from "../../elements/Input";
@@ -13,6 +13,7 @@ import Button from "../../elements/Button";
 import { emailValidation } from "../../../helpers/validationSchemas";
 import { ResetFormDataInterface } from "../../../__types__/containers/AuthForm.types";
 import { BaseFormInterface } from "../../../__types__/base.type";
+
 
 const validation = yup.object({
   email: emailValidation,

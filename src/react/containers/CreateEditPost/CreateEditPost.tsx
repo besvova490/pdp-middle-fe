@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 
 // components
-import PostThumbnail from "./PostThumbnail";
+import PostThumbnail from "./components/PostThumbnail";
 
 // elements
 import { Textarea } from "../../elements/Input";

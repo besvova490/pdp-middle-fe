@@ -3,7 +3,7 @@ import { useForm, FieldErrorsImpl } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 // components
-import AuthFormCard from "./AuthFormCard";
+import AuthFormCard from "./components/AuthFormCard";
 
 // elements
 import Input, { PasswordInput } from "../../elements/Input";

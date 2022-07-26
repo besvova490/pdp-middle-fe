@@ -2,11 +2,13 @@
 import AuthFormCard from "./AuthFormCard";
 
 // elements
-import Button from "../../elements/Button";
+import Button from "../../../elements/Button";
 
 // icons
-import SuccessRestPasswordIcon from "../../icons/SuccessRestPasswordIcon";
+import SuccessRestPasswordIcon from "../../../icons/SuccessRestPasswordIcon";
 
+// assets
+import "../../../../assets/styles/container/auth-form.scss";
 
 function SuccessPasswordReset() {
 
