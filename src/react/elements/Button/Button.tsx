@@ -61,11 +61,7 @@ function Button(props: ButtonInterface) {
     }
     {
       children
-        ? (
-          <div>
-            { children }
-          </div>
-        )
+        ? children
         : null
     }
   </>);

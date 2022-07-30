@@ -1,0 +1,156 @@
+@import "../theme.scss";
+
+
+.pdp-chat-user-profile-banner {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+  background-color: $white-color-01;
+
+  overflow: hidden;
+
+  width: 550px;
+
+  font-family: 'Poppins';
+  font-style: normal;
+
+  &__thumbnail {
+    height: 360px;
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+  &__thumbnail-image {
+    object-fit: cover;
+    object-position: center;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  &__body {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    padding: 8px 16px;
+
+    grid-gap: 16px;
+  }
+
+  &__avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+
+    border: 3px solid $white-color-01;
+
+    overflow: hidden;
+
+    margin-top: -20px;
+  }
+
+  &__avatar-image {
+    object-fit: cover;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    grid-gap: 2px;
+  }
+
+  &__info-username {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    color: $dark-color-02;
+  }
+
+  &__info-full-name {
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: $gray-color-03;
+  }
+
+  &__controls {
+    padding: 0 16px 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    grid-gap: 9px;
+  }
+
+  &__controls-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__controls-btn {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+.pdp-chat-user-profile-details {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  background-color: $white-color-01;
+
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  grid-gap: 16px;
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    grid-gap: 8px;
+  }
+
+  &__row-label {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: $dark-color-02;
+  }
+
+  &__row-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.01em;
+    color: $dark-color-02;
+  }
+}
+
+.pdp-chat-user-profile-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  grid-gap: 8px;
+
+  &__label {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    color: $dark-color-02;
+  }
+}

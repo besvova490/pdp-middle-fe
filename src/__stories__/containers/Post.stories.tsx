@@ -7,11 +7,12 @@ import PostComponent from "../../react/containers/Post";
 export default {
   title: "Containers/Post",
   component: PostComponent,
+  decorators: [
+    story => <div style={{ width: "400px" }} className="storybook-gray-background">{story()}</div>
+  ]
 } as ComponentMeta<typeof PostComponent>;
 
-const Template: ComponentStory<typeof PostComponent> = (args) => <div className="storybook-gray-background">
-  <PostComponent { ...args }/>
-</div>;
+const Template: ComponentStory<typeof PostComponent> = (args) => <PostComponent { ...args }/>;
 
 export const Post = Template.bind({});
 Post.args = {
