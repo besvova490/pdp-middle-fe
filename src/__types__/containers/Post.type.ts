@@ -1,3 +1,5 @@
+import React from "react";
+
 // helpers
 import { BaseFormInterface, DeepPartial } from "../base.type";
 
@@ -12,6 +14,7 @@ export type PostTag = {
 };
 
 export interface PostInterface {
+  id: number;
   thumbnail: string;
   description: string;
   users: Array<PostUser> | Array<number> | null;
@@ -19,7 +22,7 @@ export interface PostInterface {
   tags: Array<PostTag> | Array<number> | null;
 }
 
-export interface PostReachInterface extends PostInterface {
+export interface PostReachInterface extends PostInterface, React.FC {
   author: {
     userName: string;
     avatar: string;

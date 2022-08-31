@@ -106,6 +106,8 @@
   border-radius: 8px;
   background-color: $white-color-01;
 
+  width: 100%;
+
   padding: 16px;
 
   display: flex;
@@ -147,10 +149,45 @@
 
   grid-gap: 8px;
 
+  width: 100%;
+
   &__label {
     font-weight: 600;
     font-size: 18px;
     line-height: 24px;
     color: $dark-color-02;
+  }
+}
+
+.pdp-chat-user-profile {
+  &__add-post {
+    color: $secondary-color-01;
+    
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    grid-gap: 8px;
+
+    background-color: $gray-color-07;
+    border: 1px solid $gray-color-08;
+    border-radius: 6px;
+
+    padding: 25px;
+
+    cursor: pointer;
+  }
+
+  &__add-post-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  &__add-post-label {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
   }
 }

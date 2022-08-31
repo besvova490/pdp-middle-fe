@@ -1,18 +1,23 @@
-import { FC } from "react";
-import { IoChatbubblesOutline } from "react-icons/io5";
+import { FunctionComponent } from "react";
 
-// elements
-import Button from "../../elements/Button";
+// components
+import Controls, { ControlsInterface } from "./components/Controls";
 
 // helpers
+import getChildren from "../../../helpers/getChildren";
 import { UserProfileTopBannerInterface } from "../../../__types__/containers/UserProfile.types";
 
 // assets
 import "../../../assets/styles/container/user-profile.scss";
 
+interface ControlComponents {
+  Controls: FunctionComponent<ControlsInterface>;
+}
 
-const UserProfileTopBanner: FC<UserProfileTopBannerInterface> = (props) => {
-  const { thumbnail, avatar, username, fullName, ...resp } = props;
+const UserProfileTopBanner: FunctionComponent<UserProfileTopBannerInterface> & ControlComponents = (props) => {
+  const { thumbnail, avatar, username, fullName, children, ...resp } = props;
+
+  const [controls] = getChildren({ children, specificChildType: Controls.name });
 
   return (
     <section { ...resp } className="pdp-chat-user-profile-banner">
@@ -37,15 +42,12 @@ const UserProfileTopBanner: FC<UserProfileTopBannerInterface> = (props) => {
         </div>
       </div>
       <div className="pdp-chat-user-profile-banner__controls">
-        <Button size="small">
-          Follow
-        </Button>
-        <Button isDefault size="small" className="pdp-chat-user-profile-banner__controls-btn">
-          <IoChatbubblesOutline className="pdp-chat-user-profile-banner__controls-icon"/>
-        </Button>
+        { controls }
       </div>
     </section>
   );
 }
+
+UserProfileTopBanner.Controls = Controls;
 
 export default UserProfileTopBanner;

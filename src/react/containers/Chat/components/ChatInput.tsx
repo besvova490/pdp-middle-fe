@@ -51,27 +51,27 @@ class ChatInput extends React.Component<ChatInputInterface, ChatInputStateInterf
     const { value } = this.state;
 
     const chatClassNames = classNames(
-      "pdp-chat-input",
+      "pdp-chat-direct-input",
       className,
       {
-        "pdp-chat-input_full-width": !!fullWidth,
+        "pdp-chat-direct-input_full-width": !!fullWidth,
       }
     );
 
     return (
       <div className={chatClassNames} ref={forwardedRef as LegacyRef<HTMLDivElement>}>
-        <MdOutlinePhotoCamera className="pdp-chat-input__camera-icon"/>
-        <div className="pdp-chat-input__body">
+        <MdOutlinePhotoCamera className="pdp-chat-direct-input__camera-icon"/>
+        <div className="pdp-chat-direct-input__body">
           <TextareaAutosize
-            className="pdp-chat-input__body-tag"
+            className="pdp-chat-direct-input__body-tag"
             placeholder="Write a message..."
             value={value}
             onChange={this.onChange}
           />
-          <div className="pdp-chat-input__body-controls">
-            <span className="pdp-chat-input__body-controls-send">
+          <div className="pdp-chat-direct-input__body-controls">
+            <span className="pdp-chat-direct-input__body-controls-send">
               <FiSend
-                className="pdp-chat-input__body-controls-send-icon"
+                className="pdp-chat-direct-input__body-controls-send-icon"
                 onClick={this.handleSendMessage}
               />
             </span>

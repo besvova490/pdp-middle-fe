@@ -17,6 +17,7 @@ const Template: ComponentStory<typeof PostComponent> = (args) => <PostComponent 
 export const Post = Template.bind({});
 Post.args = {
   createdAt: new Date(),
+  updatedAt: new Date(),
   author: { avatar: "https://picsum.photos/100", userName: "Christinegz" },
   thumbnail: "https://picsum.photos/500",
   description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. At nobis doloribus numquam obcaecati, tenetur hic temporibus animi ex corrupti, distinctio, sit atque harum voluptatum dolorem est. Vel esse culpa iste?"

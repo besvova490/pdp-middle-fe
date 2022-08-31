@@ -101,6 +101,9 @@
     object-fit: cover;
     width: 100%;
     height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    object-position: center;
   }
 
   &__footer {
@@ -111,6 +114,10 @@
     padding: 8px;
 
     width: 100%;
+  }
+
+  &__footer-item-label {
+    color: inherit;
   }
 
   &__footer-item {
@@ -125,6 +132,8 @@
 
     cursor: pointer;
     transition: all .2s;
+
+    color: $dark-color-02;
 
     &:hover {
       color: $secondary-color-02;
@@ -142,5 +151,18 @@
     line-height: 16px;
     padding: 0 16px 8px;
     color: $gray-color-02;
+  }
+
+  &__comments-section {
+    width: 550px;
+    margin-bottom: 40px;
+  }
+
+  &__comments-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    grid-gap: 16px;
   }
 }

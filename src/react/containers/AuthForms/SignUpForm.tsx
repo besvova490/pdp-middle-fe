@@ -44,7 +44,7 @@ function AuthForm({ onSubmit, onError }: BaseFormInterface<SignUpDataInterface>)
     <AuthFormCard
       icon={<Logo/>}
       title="Sign up"
-      footer={<span className="pdp-chat-auth-form__footer-message">Already a member? <Link to="/login">Log In</Link></span>}
+      footer={<span className="pdp-chat-auth-form__footer-message">Already a member? <Link to="/auth/login">Log In</Link></span>}
     >
       <form className="pdp-chat-auth-form" onSubmit={handleSubmit(handleSubmitEvent, handleError)}>
         <Input

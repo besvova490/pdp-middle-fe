@@ -2,6 +2,7 @@ import { ReactNode, DetailedHTMLProps, HTMLAttributes } from "react";
 
 export default interface HeaderInterface extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
   className?: string;
+  profile?: ReactNode;
 }
 
 

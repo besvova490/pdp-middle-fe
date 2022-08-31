@@ -43,7 +43,7 @@ function LoginForm({ onSubmit, onError }: BaseFormInterface<LoginFormDataInterfa
     <AuthFormCard
       icon={<Logo/>}
       title="Log in to your account"
-      footer={<span className="pdp-chat-auth-form__footer-message">Dont have an account? <Link to="/sign-up">Sign up</Link></span>}
+      footer={<span className="pdp-chat-auth-form__footer-message">Dont have an account? <Link to="/auth/sign-up">Sign up</Link></span>}
     >
       <form
         className="pdp-chat-auth-form"

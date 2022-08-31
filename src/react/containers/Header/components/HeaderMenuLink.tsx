@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 // types
-import { HeaderLinkInterface } from "../../../__types__/containers/Header.type";
+import { HeaderLinkInterface } from "../../../../__types__/containers/Header.type";
 
 
 function HeaderMenuLink({ href, icon, label }: HeaderLinkInterface) {

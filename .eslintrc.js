@@ -19,7 +19,8 @@ module.exports = {
     "func-call-spacing": "off",
     "no-useless-escape": "warn",
     "no-use-before-define": [0],
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
   },
   "overrides": [
     {

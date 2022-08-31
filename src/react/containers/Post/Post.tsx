@@ -5,8 +5,10 @@ import { AiOutlineLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
 import { RiShareForwardLine } from "react-icons/ri";
 import { HiOutlineLocationMarker } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 // helpers
+import { DeepPartial } from "../../../__types__/base.type";
 import { PostReachInterface } from "../../../__types__/containers/Post.type";
 
 // assets
@@ -15,19 +17,19 @@ import "../../../assets/styles/container/post.scss";
 
 dayjs.extend(relativeTime)
 
-function Post(props: PostReachInterface) {
+function Post(props: DeepPartial<PostReachInterface>) {
   const {
     thumbnail,
     description,
-    tags,
     location,
     author,
     likesCount = 0,
     commentsCount = 0,
     createdAt,
+    id,
   } = props;
 
-  const daysCount = dayjs(createdAt).fromNow();
+  const daysCount = createdAt ? dayjs(createdAt as Date).fromNow() : null;
 
 
   return (
@@ -35,12 +37,12 @@ function Post(props: PostReachInterface) {
       <div className="pdp-chat-post__header">
         <div className="pdp-chat-post__header-author">
           <img
-            alt={`avatar of ${author.userName}`}
-            src={author.avatar}
+            alt={`avatar of ${author?.userName}`}
+            src={author?.avatar}
             className="pdp-chat-post__header-author-avatar-image"
           />
           <div className="pdp-chat-post__header-post-info">
-            <span className="pdp-chat-post__header-post-info-author">{author.userName}</span>
+            <span className="pdp-chat-post__header-post-info-author">{author?.userName}</span>
             {
               createdAt
                 ? <span className="pdp-chat-post__header-post-info-date">added a photo &#9679; {daysCount}</span>
@@ -74,10 +76,10 @@ function Post(props: PostReachInterface) {
           <AiOutlineLike className="pdp-chat-post__footer-item-icon"/>
           <span className="pdp-chat-post__footer-item-label">Like</span>
         </div>
-        <div className="pdp-chat-post__footer-item">
+        <Link to={`post/${id}`} className="pdp-chat-post__footer-item">
           <FaRegComment className="pdp-chat-post__footer-item-icon"/>
           <span className="pdp-chat-post__footer-item-label">Comment</span>
-        </div>
+        </Link>
         <div className="pdp-chat-post__footer-item">
           <RiShareForwardLine className="pdp-chat-post__footer-item-icon"/>
           <span className="pdp-chat-post__footer-item-label">Share</span>

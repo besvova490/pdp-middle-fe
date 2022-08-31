@@ -3,7 +3,6 @@ import { RiCloseFill } from "react-icons/ri";
 
 // components
 import ChatItem from "./components/ChatItem";
-import EmptyChatState from "./components/EmptyChatState";
 import ChatCard from "./components/ChatCard";
 import Drawer from "../../components/Drawer";
 import StartNewChat from "./StartNewChat";

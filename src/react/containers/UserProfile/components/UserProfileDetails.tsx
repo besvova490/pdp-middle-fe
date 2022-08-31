@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 // helpers
-import { UserProfileDetailsInterface } from "../../../__types__/containers/UserProfile.types";
+import { UserProfileDetailsInterface } from "../../../../__types__/containers/UserProfile.types";
 
 
 const UserProfileDetails: FC<UserProfileDetailsInterface> = ({ description, ...rest }) => {
