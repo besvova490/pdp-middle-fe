@@ -27,7 +27,7 @@ function Avatar({ alt, src, label, labelPosition = "left", size = "middle", clas
     >
       <div className="pdp-chat-avatar__image-wrapper">
         <img
-          alt={alt}
+          alt={alt || ""}
           src={src || defaultUserAvatar}
           onError={e => e.currentTarget.src = defaultUserAvatar}
           className="pdp-chat-avatar__image-tag"

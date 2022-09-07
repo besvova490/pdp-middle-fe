@@ -2,62 +2,31 @@
 import ChatMessage from "../Chat/components/ChatMessage";
 import ChatInput from "../Chat/components/ChatInput";
 
+// helpers
+import { PostCommentsInterface } from "../../../__types__/containers/Post.type";
+
 // assets
 import "../../../assets/styles/container/post.scss";
 
 
-const MOCK_COMMENTS_LIST = [
-  {
-    author: {
-      avatar: "https://picsum.photos/100",
-      userName: "pleazart"
-    },
-    createdAt: new Date(),
-    text: "I have a situation where a date value is being returned from a web"
-  },
-  {
-    author: {
-      avatar: "https://picsum.photos/100",
-      userName: "pleazart"
-    },
-    createdAt: new Date(),
-    text: "I have a situation where a date value is being returned from a web"
-  },
-  {
-    author: {
-      avatar: "https://picsum.photos/100",
-      userName: "pleazart"
-    },
-    createdAt: new Date(),
-    text: "I have a situation where a date value is being returned from a web"
-  },
-  {
-    author: {
-      avatar: "https://picsum.photos/100",
-      userName: "pleazart"
-    },
-    createdAt: new Date(),
-    text: "I have a situation where a date value is being returned from a web"
-  }
-];
-
-
-function PostComments() {
+function PostComments({ comments, addComment }: PostCommentsInterface) {
 
 
   return (
     <div className="pdp-chat-post__comments-section">
       <div className="pdp-chat-post__comments-list">
         {
-          MOCK_COMMENTS_LIST.map((item, key) => (
+          comments.map((item, key) => (
             <ChatMessage
               key={key}
-              { ...item }
+              author={item.author}
+              createdAt={item.createdAt}
+              text={item.body}
             />
           ))
         }
       </div>
-      <ChatInput/>
+      <ChatInput onSend={e => addComment && addComment(e)}/>
     </div>
   );
 }

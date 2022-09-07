@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useQuery, useMutation } from "@apollo/client";
 
 // containers
 import Post from "../containers/Post";
@@ -7,23 +8,36 @@ import PostComments from "../containers/Post/PostComments";
 // layout
 import ListWithSidebar from "../layouts/ListWithSidebar";
 
-const MOCK_POST_DATA = {
-  createdAt: new Date(),
-  author: { avatar: "https://picsum.photos/100", userName: "Christinegz" },
-  thumbnail: "https://picsum.photos/500",
-  description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. At nobis doloribus numquam obcaecati, tenetur hic temporibus animi ex corrupti, distinctio, sit atque harum voluptatum dolorem est. Vel esse culpa iste?"
-};
+// helpers
+import { PostReachInterface } from "../../__types__/containers/Post.type";
+import post from "../../gql/post";
+
 
 function PostPage() {
   const { id } = useParams();
+
+  const { data } = useQuery<{ post: PostReachInterface }>(
+    post.QUERY_SINGLE_POST,
+    { variables: { id: +(id as string) } }
+  );
+
+  const [addComment] = useMutation(post.ADD_POST_COMMENT, {
+    refetchQueries: [{ query: post.QUERY_SINGLE_POST, variables: { id: +(id as string) } }],
+  });
 
   return (
     <ListWithSidebar>
       <Post
         key={id}
-        { ...MOCK_POST_DATA }
+        author={data?.post.author}
+        description={data?.post.description}
+        thumbnail={data?.post.thumbnail}
+        createdAt={data?.post.createdAt}
       />
-      <PostComments/>
+      <PostComments
+        comments={data?.post.comments || []}
+        addComment={e => addComment({ variables: { addCommentId: +(id as string), comment: e } })}
+      />
       <ListWithSidebar.Sidebar>
         Sidebar
       </ListWithSidebar.Sidebar>

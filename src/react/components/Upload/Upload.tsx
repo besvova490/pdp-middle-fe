@@ -1,7 +1,9 @@
 import { useRef } from "react";
 import { BiUpload } from "react-icons/bi";
+import { toast } from "react-toastify";
 
 // helpers
+import uploadToS3 from "../../../aws/s3";
 import classNames from "../../../helpers/classNames";
 import UploadInterface from "../../../__types__/components/Upload.type";
 
@@ -9,11 +11,15 @@ import UploadInterface from "../../../__types__/components/Upload.type";
 import "../../../assets/styles/components/upload.scss";
 
 
-function Upload ({ className = "", children, name, accept }: UploadInterface) {
+function Upload ({ className = "", children, name, accept, onChange }: UploadInterface) {
   const ref = useRef<HTMLInputElement>(null);
 
-  const handleUpload = (e: FileList | null) => {
-    console.log(e)
+  const handleUpload = (files: FileList | null) => {
+    if (files) {
+      uploadToS3(files[0])
+        .then(resp => onChange && onChange({ name: resp?.Key, url: resp?.Location }))
+        .catch(e => toast.error(e.message))
+    }
   }
 
   const uploadClassNames = classNames(

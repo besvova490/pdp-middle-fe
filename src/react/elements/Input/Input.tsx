@@ -30,7 +30,7 @@ const Input = React.forwardRef<HTMLElement, InputInterface>(
     useEffect(() => {
       if (typeof value === "undefined") return;
 
-      setInputValue(value);
+      setInputValue(value || "");
     }, [value]);
 
 

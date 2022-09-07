@@ -1,19 +1,13 @@
-import { MdOutlineModeEditOutline, MdDeleteOutline } from "react-icons/md";
+import { MdDeleteOutline } from "react-icons/md";
 
 // components
 import Upload from "../../../components/Upload";
-import Dropdown from "../../../components/Dropdown";
 
 // helpers
 import { UserThumbnailInterface } from "../../../../__types__/containers/EditUserProfile.types";
 
-const OPTIONS_LIST = [
-  { label: <div className="pdp-chat-edit-user-profile-photos__edit-option"><MdOutlineModeEditOutline/><span>Change photo</span></div>, value: "changePhoto" },
-  { label: <div className="pdp-chat-edit-user-profile-photos__edit-option"><MdDeleteOutline/><span>Remove photo</span></div>, value: "removePhoto" },
-];
 
-
-function UserThumbnail({ username, thumbnailSrc, avatarSrc }: UserThumbnailInterface) {
+function UserThumbnail({ username, thumbnailSrc, avatarSrc, onChange }: UserThumbnailInterface) {
 
 
   return (
@@ -27,16 +21,19 @@ function UserThumbnail({ username, thumbnailSrc, avatarSrc }: UserThumbnailInter
                 alt={`thumbnail for ${username}`}
                 className="pdp-chat-edit-user-profile-photos__thumbnail-image"
               />
-              <Dropdown
-                options={OPTIONS_LIST}
-                arrow={false}
-                placement="bottomRight"
+              <span
                 className="pdp-chat-edit-user-profile-photos__edit pdp-chat-edit-user-profile-photos__edit_thumbnail"
+                onClick={() => onChange && onChange("thumbnailImage", null)}
               >
-                <MdOutlineModeEditOutline/>
-              </Dropdown>
+                <MdDeleteOutline/>
+              </span>
             </>)
-            : <Upload className="pdp-chat-edit-user-profile-photos__thumbnail-upload"/>
+            : (
+              <Upload
+                className="pdp-chat-edit-user-profile-photos__thumbnail-upload"
+                onChange={(e) => onChange && onChange("thumbnailImage", e?.url || null)}
+              />
+            )
         }
       </div>
       <div className="pdp-chat-edit-user-profile-photos__avatar">
@@ -48,16 +45,19 @@ function UserThumbnail({ username, thumbnailSrc, avatarSrc }: UserThumbnailInter
                 alt={`avatar for ${username}`}
                 className="pdp-chat-edit-user-profile-photos__avatar-image"
               />
-              <Dropdown
-                options={OPTIONS_LIST}
-                arrow={false}
-                placement="bottom"
+              <span
                 className="pdp-chat-edit-user-profile-photos__edit"
+                onClick={() => onChange && onChange("avatar", null)}
               >
-                <MdOutlineModeEditOutline/>
-              </Dropdown>
+                <MdDeleteOutline/>
+              </span>
             </>)
-            : <Upload className="pdp-chat-edit-user-profile-photos__avatar-image-upload"/>
+            : (
+              <Upload
+                className="pdp-chat-edit-user-profile-photos__avatar-image-upload"
+                onChange={(e) => onChange && onChange("avatar", e?.url || null)}
+              />
+            )
         }
       </div>
     </div>

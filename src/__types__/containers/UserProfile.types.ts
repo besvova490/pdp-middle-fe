@@ -2,8 +2,8 @@ import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 
 export interface UserProfileTopBannerInterface extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
-  thumbnail?: string;
-  avatar?: string;
+  thumbnail?: string | null;
+  avatar?: string | null;
   username?: string;
   fullName?: string;
 }

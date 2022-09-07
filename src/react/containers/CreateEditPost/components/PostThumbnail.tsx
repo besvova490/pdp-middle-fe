@@ -4,10 +4,11 @@ import { MdDeleteOutline } from "react-icons/md";
 import Upload from "../../../components/Upload";
 
 // helpers
+import { PostThumbnailInterface } from "../../../../__types__/containers/Post.type";
 import classNames from "../../../../helpers/classNames";
 
 
-function PostThumbnail({ thumbnailSrc, error }: { thumbnailSrc?: string, error?: string }) {
+function PostThumbnail({ thumbnailSrc, error, onChange }: PostThumbnailInterface) {
   
 
   const className = classNames(
@@ -30,12 +31,16 @@ function PostThumbnail({ thumbnailSrc, error }: { thumbnailSrc?: string, error?:
                 className="pdp-chat-edit-user-profile-photos__thumbnail-image"
               />
               <div
+                onClick={() => onChange && onChange(null)}
                 className="pdp-chat-edit-user-profile-photos__edit pdp-chat-edit-user-profile-photos__edit_thumbnail"
               >
                 <MdDeleteOutline/>
               </div>
             </>)
-            : <Upload className="pdp-chat-edit-user-profile-photos__thumbnail-upload"/>
+            : <Upload
+              className="pdp-chat-edit-user-profile-photos__thumbnail-upload"
+              onChange={onChange}
+            />
         }
       </div>
       { error ? <span className="pdp-chat-edit-user-profile-photos__error">{ error }</span> : null }

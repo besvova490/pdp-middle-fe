@@ -13,9 +13,33 @@ export type PostTag = {
   username: string;
 };
 
+export type PostAuthor = {
+  avatar: string;
+  userName: string;
+};
+
+export interface CommentInterface {
+  author: PostAuthor;
+  createdAt: Date;
+  body: string;
+}
+
+export interface CommentComponentInterface {
+  author: PostAuthor;
+  createdAt: Date;
+  body: string;
+}
+
+export interface PostThumbnailInterface {
+  thumbnailSrc?: string | null;
+  error?: string;
+  onChange?: (args: { name: string, url: string } | null) => void;
+}
+
 export interface PostInterface {
   id: number;
-  thumbnail: string;
+  title: string;
+  thumbnail: string | null;
   description: string;
   users: Array<PostUser> | Array<number> | null;
   location: string;
@@ -23,16 +47,18 @@ export interface PostInterface {
 }
 
 export interface PostReachInterface extends PostInterface, React.FC {
-  author: {
-    userName: string;
-    avatar: string;
-  },
+  author: PostAuthor,
   createdAt: Date;
   updatedAt: Date;
   likesCount: number;
   commentsCount: number;
+  comments: Array<CommentInterface>;
 }
 
+export interface PostCommentsInterface {
+  comments: Array<CommentComponentInterface>;
+  addComment: (e: string) => void;
+}
 
 export default interface CreateEditPostFormInterface
 extends BaseFormInterface<PostInterface> {

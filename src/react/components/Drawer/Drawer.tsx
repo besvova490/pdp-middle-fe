@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect, useCallback } from "react";
 
 // components
 import RenderInPortal from "../RenderInPortal";
@@ -12,10 +12,27 @@ import DrawerInterface from "../../../__types__/components/Drawer.types";
 import "../../../assets/styles/components/drawer.scss";
 
 
-function Drawer({ visible, onClose, children }: DrawerInterface) {
-  const ref = useRef<HTMLDivElement | null>(null)
+function Drawer({ visible, onClose, children, closable = true }: DrawerInterface) {
+  const ref = useRef<HTMLDivElement | null>(null);
 
-  useClickOutside(ref, () => onClose && onClose());
+  const closeCallback = useCallback(() => {
+    console
+    if (closable && onClose) onClose()
+  }, [closable, onClose]);
+
+  useClickOutside(ref, closeCallback);
+
+  useEffect(() => {
+    if (visible) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [visible]);
 
   const drawerClassName = classNames(
     "pdp-chat-drawer",

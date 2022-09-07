@@ -4,6 +4,7 @@ export interface DropdownOptionInterface {
   label: ReactNode,
   value: unknown,
   disabled?: boolean,
+  href?: string,
   onClick?: () => void;
 }
 

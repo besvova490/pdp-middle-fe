@@ -29,7 +29,7 @@ const Textarea = React.forwardRef<HTMLElement, TextareaInterface>(
     useEffect(() => {
       if (typeof value === "undefined") return;
 
-      setInputValue(value);
+      setInputValue(value || "");
     }, [value]);
 
 

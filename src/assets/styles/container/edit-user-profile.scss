@@ -149,12 +149,13 @@
 
     height: 200px;
     width: 100%;
+    max-width: 380px;
 
     position: relative;
   }
 
   &__thumbnail-image {
-    object-position: cover;
+    object-fit: cover;
     object-position: center center;
 
     width: 100%;
@@ -208,6 +209,12 @@
     border-radius: 50%;
     background-color: $secondary-color-02;
     color: $white-color-01;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
 
     &_thumbnail {
       top: 10px;

@@ -32,12 +32,12 @@ export const signUpAuthSchema = yup.object({
 
 export const editUserProfileValidation = yup.object({
   email: emailValidation,
-  avatar: yup.string().typeError("Wrong avatar format!"),
-  thumbnailImage: yup.string().typeError("Wrong Thumbnail Image format!"),
+  avatar: yup.string().nullable().typeError("Wrong avatar format!"),
+  thumbnailImage: yup.string().nullable().typeError("Wrong Thumbnail Image format!"),
   userName: yup.string().required("Field is required"),
-  fullName: yup.string().typeError("Wrong Full Name format!"),
-  description: yup.string().max(500, "Max allowed length is 500 chars"),
-  phone: yup.string().required("Field is required"),
+  fullName: yup.string().nullable().typeError("Wrong Full Name format!"),
+  description: yup.string().nullable().max(500, "Max allowed length is 500 chars"),
+  phone: yup.string().nullable().required("Field is required"),
 });
 
 export const createEditPostValidation = yup.object({

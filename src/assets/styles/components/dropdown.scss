@@ -2,6 +2,7 @@
 
 .pdp-chat-dropdown {
   width: max-content;
+  cursor: pointer;
 
   display: inline-flex;
   align-items: center;
@@ -25,6 +26,7 @@
     display: inline-block;
 
     position: absolute;
+    z-index: 2;
 
     margin-top: -2px;
   }

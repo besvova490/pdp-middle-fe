@@ -8,7 +8,7 @@ import UserThumbnail from "./components/UserThumbnail";
 
 // helpers
 import { editUserProfileValidation } from "../../../helpers/validationSchemas";
-import EditUserProfileFormInterface, { EditUserProfileInterface, EditUserProfileDraftInterface } from "../../../__types__/containers/EditUserProfile.types";
+import EditUserProfileFormInterface, { EditUserProfileInterface } from "../../../__types__/containers/EditUserProfile.types";
 
 // elements
 import Button from "../../elements/Button";
@@ -18,19 +18,19 @@ import Input, { Textarea } from "../../elements/Input";
 import "../../../assets/styles/container/edit-user-profile.scss";
 
 
-function EditUserProfile({ onSubmit, onError, onGoBack }: EditUserProfileFormInterface) {
+function EditUserProfile({ onSubmit, onError, onGoBack, defaultValues }: EditUserProfileFormInterface) {
 
   const { handleSubmit, setValue, watch, formState: { errors, touchedFields } } = useForm<EditUserProfileInterface>({
     defaultValues: {
-      avatar: "",
-      thumbnailImage: "",
-      userName: "",
+      avatar: defaultValues?.avatar,
+      thumbnailImage: defaultValues?.thumbnailImage,
+      userName: defaultValues?.userName,
       interests: [],
-      fullName: "",
-      description: "",
-      address: "",
-      phone: "",
-      email: "",
+      fullName: defaultValues?.fullName,
+      description: defaultValues?.description,
+      address: defaultValues?.address,
+      phone: defaultValues?.phone,
+      email: defaultValues?.email,
     },
     resolver: yupResolver(editUserProfileValidation),
   });
@@ -39,10 +39,8 @@ function EditUserProfile({ onSubmit, onError, onGoBack }: EditUserProfileFormInt
     avatar,
     thumbnailImage,
     userName,
-    interests,
     fullName,
     description,
-    address,
     phone,
     email
   } = watch();
@@ -83,6 +81,9 @@ function EditUserProfile({ onSubmit, onError, onGoBack }: EditUserProfileFormInt
       <div>
         <UserThumbnail
           username="christinegz"
+          thumbnailSrc={thumbnailImage || ""}
+          avatarSrc={avatar || ""}
+          onChange={(key, value) => setValue(key, value, { shouldTouch: true })}
         />
       </div>
       <div className="pdp-chat-edit-user-profile__body">

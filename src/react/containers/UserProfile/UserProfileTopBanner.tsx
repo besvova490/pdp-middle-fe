@@ -24,7 +24,7 @@ const UserProfileTopBanner: FunctionComponent<UserProfileTopBannerInterface> & C
       <div className="pdp-chat-user-profile-banner__thumbnail">
         <img
           className="pdp-chat-user-profile-banner__thumbnail-image"
-          src={thumbnail}
+          src={thumbnail || ""}
           alt={`thumbnail for ${username}`}
         />
       </div>
@@ -32,7 +32,7 @@ const UserProfileTopBanner: FunctionComponent<UserProfileTopBannerInterface> & C
         <div className="pdp-chat-user-profile-banner__avatar">
           <img
             className="pdp-chat-user-profile-banner__avatar-image"
-            src={avatar}
+            src={avatar || ""}
             alt={`avatar for ${username}`}
           />
         </div>

@@ -1,26 +1,17 @@
 import { useState, useEffect, useRef } from "react";
 import { FaChevronDown } from "react-icons/fa";
+import isEqual from "lodash/isEqual";
+import { Link } from "react-router-dom";
 
 // components
 import AnimatedHeight from "../AnimatedHeight";
 import RenderInPortal from "../RenderInPortal";
 
 // helpers
-import DropdownInterface from "../../../__types__/components/Dropdown.type";
+import DropdownInterface, { DropdownOptionInterface } from "../../../__types__/components/Dropdown.type";
 
 // assets
 import "../../../assets/styles/components/dropdown.scss";
-
-type PositionOfElement = {
-  bottom: number;
-  height: number;
-  left: number;
-  right: number;
-  top: number;
-  width: number;
-  x: number;
-  y: number;
-}
 
 
 function Dropdown(props: DropdownInterface) {
@@ -37,10 +28,9 @@ function Dropdown(props: DropdownInterface) {
   } = props;
 
   const [isMenuVisible, setIsMenuVisible] = useState(!!visible || !!defaultVisible);
-  const [position, setPosition] = useState<PositionOfElement | null>(null);
 
   const ref = useRef<HTMLUListElement | null>(null);
-
+  const refPosition = useRef<DOMRect | null>(null);
 
   useEffect(() => {
     if (typeof visible !== "undefined") {
@@ -52,9 +42,18 @@ function Dropdown(props: DropdownInterface) {
     setIsMenuVisible(e);
   }
 
-  const getPlacement = () => {
-    if (!position) return {};
+  const setRootPosition = (el: HTMLDivElement | null) => {
+    const elementPosition = el ? el.getBoundingClientRect() : {};
 
+    if (el && !isEqual(refPosition.current, elementPosition)) {
+      refPosition.current = elementPosition as DOMRect;
+    }
+  }
+
+  const getPlacement = () => {
+    if (!refPosition.current) return {};
+
+    const position = refPosition.current;
     const optionsHeight = ref.current?.getBoundingClientRect().height || 0;
     const optionsWidth = ref.current?.getBoundingClientRect().width || 0;
 
@@ -75,12 +74,21 @@ function Dropdown(props: DropdownInterface) {
         return { top: `${position.bottom}px`, left: `${position.left}px` };
     }
   }
+
+  const onSingleItemClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, item: DropdownOptionInterface) => {
+    setIsMenuVisible(false);
+                    
+    if (item.onClick) {
+      e.preventDefault();
+      item.onClick();
+    }
+  }
   
 
   return (
     <div
       { ...rest }
-      ref={el => !position && el && setPosition(el.getBoundingClientRect())}
+      ref={setRootPosition}
       onMouseOver={() => handleToggleVisible(true)}
       onMouseLeave={() => handleToggleVisible(false)}
       className={`pdp-chat-dropdown ${className}`}
@@ -95,7 +103,7 @@ function Dropdown(props: DropdownInterface) {
         renderArrow ? renderArrow(!!visible) : null
       }
       <RenderInPortal
-        key={JSON.stringify(position)}
+        key={JSON.stringify(refPosition.current)}
         className="pdp-chat-dropdown__menu"
         style={getPlacement()}
       >
@@ -106,7 +114,12 @@ function Dropdown(props: DropdownInterface) {
                 className="pdp-chat-dropdown__menu-list-item"
                 key={`${index} - ${item.label}`}
               >
-                { item.label }
+                <Link
+                  to={item.href || "#"}
+                  onClick={e => onSingleItemClick(e, item)}
+                >
+                  { item.label }
+                </Link>
               </li>
             )) }
           </ul>

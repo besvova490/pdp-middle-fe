@@ -1,4 +1,5 @@
 import { SiTestinglibrary } from "react-icons/si";
+import { Link } from "react-router-dom";
 
 // components
 import HeaderProfile from "./HeaderProfile";
@@ -18,9 +19,9 @@ function BaseHeader({ className, children, ...props }: HeaderInterface) {
   return (
     <header className={`pdp-chat-header ${className}`} { ...props }>
       <div className="pdp-chat-header__navigation">
-        <span className="pdp-chat-header__logo">
+        <Link className="pdp-chat-header__logo" to="/">
           <SiTestinglibrary/>
-        </span>
+        </Link>
         { otherChildren }
       </div>
       { profile }

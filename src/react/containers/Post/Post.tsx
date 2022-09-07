@@ -1,11 +1,11 @@
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { GrImage } from "react-icons/gr";
 import { AiOutlineLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
 import { RiShareForwardLine } from "react-icons/ri";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import { FcRemoveImage } from "react-icons/fc";
 
 // helpers
 import { DeepPartial } from "../../../__types__/base.type";
@@ -15,7 +15,7 @@ import { PostReachInterface } from "../../../__types__/containers/Post.type";
 import "../../../assets/styles/container/post.scss";
 
 
-dayjs.extend(relativeTime)
+dayjs.extend(relativeTime);
 
 function Post(props: DeepPartial<PostReachInterface>) {
   const {
@@ -29,18 +29,24 @@ function Post(props: DeepPartial<PostReachInterface>) {
     id,
   } = props;
 
-  const daysCount = createdAt ? dayjs(createdAt as Date).fromNow() : null;
+  const daysCount = createdAt ? dayjs((createdAt as number) - (37 * 60 * 60 * 1000)).fromNow() : null;
 
 
   return (
     <div className="pdp-chat-post">
       <div className="pdp-chat-post__header">
         <div className="pdp-chat-post__header-author">
-          <img
-            alt={`avatar of ${author?.userName}`}
-            src={author?.avatar}
-            className="pdp-chat-post__header-author-avatar-image"
-          />
+          {
+            author?.avatar
+              ? (
+                <img
+                  alt={`avatar of ${author?.userName}`}
+                  src={author.avatar}
+                  className="pdp-chat-post__header-author-avatar-image"
+                />
+              )
+              : <FcRemoveImage className="pdp-chat-post__header-author-avatar-image"/>
+          }
           <div className="pdp-chat-post__header-post-info">
             <span className="pdp-chat-post__header-post-info-author">{author?.userName}</span>
             {
@@ -67,7 +73,7 @@ function Post(props: DeepPartial<PostReachInterface>) {
           {
             thumbnail
               ? <img className="pdp-chat-post__thumbnail-image" src={thumbnail} alt="image for post"/>
-              : <GrImage className="pdp-chat-post__thumbnail-icon"/>
+              : <FcRemoveImage className="pdp-chat-post__thumbnail-icon"/>
           }
         </div>
       </div>

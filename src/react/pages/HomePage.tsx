@@ -1,46 +1,31 @@
+import { useEffect } from "react";
+import { useLazyQuery } from "@apollo/client";
+
 // layout
 import ListWithSidebar from "../layouts/ListWithSidebar";
 
 // containers
 import Post from "../containers/Post";
 
+// helpers
+import { PostReachInterface } from "../../__types__/containers/Post.type";
+import post from "../../gql/post";
 
-const POSTS_LIST = [
-  {
-    createdAt: new Date(),
-    author: { avatar: "https://picsum.photos/100", userName: "Christinegz" },
-    thumbnail: "https://picsum.photos/500",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. At nobis doloribus numquam obcaecati, tenetur hic temporibus animi ex corrupti, distinctio, sit atque harum voluptatum dolorem est. Vel esse culpa iste?"
-  },
-  {
-    createdAt: new Date(),
-    author: { avatar: "https://picsum.photos/100", userName: "Christinegz" },
-    thumbnail: "https://picsum.photos/500",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. At nobis doloribus numquam obcaecati, tenetur hic temporibus animi ex corrupti, distinctio, sit atque harum voluptatum dolorem est. Vel esse culpa iste?"
-  },
-  {
-    createdAt: new Date(),
-    author: { avatar: "https://picsum.photos/100", userName: "Christinegz" },
-    thumbnail: "https://picsum.photos/500",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. At nobis doloribus numquam obcaecati, tenetur hic temporibus animi ex corrupti, distinctio, sit atque harum voluptatum dolorem est. Vel esse culpa iste?"
-  },
-  {
-    createdAt: new Date(),
-    author: { avatar: "https://picsum.photos/100", userName: "Christinegz" },
-    thumbnail: "https://picsum.photos/500",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. At nobis doloribus numquam obcaecati, tenetur hic temporibus animi ex corrupti, distinctio, sit atque harum voluptatum dolorem est. Vel esse culpa iste?"
-  }
-];
 
 function HomePage() {
+  const [fetchPosts, { data }] = useLazyQuery<{ posts: Array<PostReachInterface> }>(post.QUERY_POSTS);
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   return (
     <ListWithSidebar>
       {
-        POSTS_LIST.map((item, index) => (
+        (data?.posts || []).map((item, index) => (
           <Post
             key={index}
-            id={index}
+            id={item.id}
             createdAt={item.createdAt}
             author={item.author}
             thumbnail={`${item.thumbnail}?${index}`}

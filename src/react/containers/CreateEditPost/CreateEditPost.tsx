@@ -9,7 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import PostThumbnail from "./components/PostThumbnail";
 
 // elements
-import { Textarea } from "../../elements/Input";
+import Input, { Textarea } from "../../elements/Input";
 import Button from "../../elements/Button";
 
 // helpers
@@ -22,13 +22,11 @@ import "../../../assets/styles/container/edit-user-profile.scss";
 
 function CreateEditPost({ onGoBack, onSubmit, onError }: CreateEditPostFormInterface) {
 
-  const { handleSubmit, setValue, watch, formState: { errors, touchedFields } } = useForm<PostInterface>({
+  const { handleSubmit, setValue, watch, formState: { errors } } = useForm<PostInterface>({
     defaultValues: {
       thumbnail: "",
       description: "",
-      users: null,
-      location: "",
-      tags: null,
+      title: "",
     },
     resolver: yupResolver(createEditPostValidation),
   });
@@ -36,17 +34,11 @@ function CreateEditPost({ onGoBack, onSubmit, onError }: CreateEditPostFormInter
   const {
     description,
     thumbnail,
+    title,
   } = watch();
 
   const handleOnSubmit = (e: PostInterface) => {
-    const changedFieldsNames = Object.keys(touchedFields);
-    const data: { [key: string]: unknown } = {};
-
-    changedFieldsNames.forEach((key) => {
-      data[key] = e[key as keyof PostInterface];
-    });
-
-    onSubmit && onSubmit(data);
+    onSubmit && onSubmit(e);
   }
 
   const handleOnError = (e: FieldErrorsImpl<PostInterface>) => {
@@ -72,12 +64,21 @@ function CreateEditPost({ onGoBack, onSubmit, onError }: CreateEditPostFormInter
       <PostThumbnail
         thumbnailSrc={thumbnail}
         error={errors.thumbnail?.message}
+        onChange={e => setValue("thumbnail", e ? e.url : null)}
       />
       <div className="pdp-chat-edit-user-profile__body">
         <div className="pdp-chat-edit-user-profile__body-row-title">
           Main information
         </div>
         <div className="pdp-chat-edit-user-profile__body-row">
+          <Input
+            fullWidth
+            label="Title"
+            name="title"
+            error={errors.title?.message}
+            value={title}
+            onChange={e => setValue("title", e.target.value, { shouldTouch: true })}
+          />
           <Textarea
             fullWidth
             label="Add a description"
