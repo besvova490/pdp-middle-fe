@@ -6,6 +6,7 @@
   font-style: normal;
   letter-spacing: 0.02em;
   background-color: $white-color-01;
+  box-shadow: -1px 8px 20px rgb(0 0 0 / 10%);
 
   display: flex;
   flex-direction: column;
@@ -49,9 +50,16 @@
     }
   }
 
+  &__add-chat-btn {
+    margin-left: auto;
+  }
+
   &__body {
     flex: 1 1 auto;
     overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
   }
 
   &__chats-list {
@@ -59,6 +67,7 @@
 
     .pdp-chat-item {
       border-bottom: 1px solid $gray-color-06;
+      max-width: 400px;
     }
   }
 
@@ -87,8 +96,8 @@
   &__messages-list {
     padding: 16px;
 
-    display: grid;
-    align-items: center;
+    display: flex;
+    align-items: flex-end;
     justify-content: flex-end;
     flex-direction: column;
     grid-gap: 12px;
@@ -99,6 +108,7 @@
 
   &__direct {
     height: 100%;
+    flex: 1 1 auto;
 
     display: flex;
     flex-direction: column;

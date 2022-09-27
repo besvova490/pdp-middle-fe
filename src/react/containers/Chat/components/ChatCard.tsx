@@ -10,18 +10,18 @@ import { ChatCardInterface } from "../../../../__types__/containers/Chat.type";
 import "../../../../assets/styles/container/chat/chat.scss";
 
 
-function ChatCard({ children }: ChatCardInterface) {
+function ChatCard({ children, className = "" }: ChatCardInterface) {
 
   const headerToRender = React.Children.toArray(children)
     .find((child) => (child as React.ReactElement).type === ChatCardHeader);
 
 
   return (
-    <div className="pdp-chat">
+    <div className={`pdp-chat ${className}`}>
       { headerToRender }
       <div className="pdp-chat__body">
         {
-          React.Children.toArray(children).map((child, index) => {
+          React.Children.toArray(children).map((child) => {
             if ((child as React.ReactElement).type === ChatCardHeader) return null;
 
             return child

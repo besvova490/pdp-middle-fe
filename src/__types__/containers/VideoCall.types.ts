@@ -4,7 +4,7 @@ import { DetailedHTMLProps, HTMLAttributes } from "react";
 export interface VideoCallBlockInterface extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
   username?: string;
   isCameraOff?: boolean;
-  isOvn?: boolean;
+  isOwn?: boolean;
 }
 
 export interface VideoCallControlsInterface extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
@@ -14,4 +14,8 @@ export interface VideoCallControlsInterface extends DetailedHTMLProps<HTMLAttrib
   onCameraToggle: (e: boolean) => void;
   onLeave: () => void;
 }
+
+export type VideoCallPreOffer = {
+  code: string;
+};
 

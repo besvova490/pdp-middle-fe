@@ -6,4 +6,5 @@ export default interface AvatarInterface extends DetailedHTMLProps<HTMLAttribute
   label?: ReactNode;
   labelPosition?: "left" | "bottom";
   size?: "small" | "middle" | "large";
+  online?: boolean;
 }

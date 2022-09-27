@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { RiCloseFill } from "react-icons/ri";
 
 // components
 import ChatItem from "./components/ChatItem";
@@ -10,22 +9,25 @@ import StartNewChat from "./StartNewChat";
 // elements
 import Button from "../../elements/Button";
 
+// components
+import EmptyChatState from "./components/EmptyChatState";
+
+// helpers
+import { ChatContainerInterface } from "../../../__types__/containers/Chat.type";
+
 // assets
 import "../../../assets/styles/container/chat/chat.scss";
 
 
-function Chat() {
+function Chat({ chats }: ChatContainerInterface) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
 
   return (
     <ChatCard>
       <ChatCard.ChatCardHeader>
-        <div className="pdp-chat__header-go-back">
-          <RiCloseFill className="pdp-chat__header-go-back-icon"/>
-          <span>Chats</span>
-        </div>
         <Button
+          className="pdp-chat__add-chat-btn"
           shape="round"
           type="primary"
           size="small"
@@ -35,40 +37,24 @@ function Chat() {
         </Button>
       </ChatCard.ChatCardHeader>
       <div className="pdp-chat__chats-list">
-        <ChatItem
-          avatar={"https://picsum.photos/seed/picsum/300/300"}
-          username={"Pauline Lynch"}
-          lastMessage={"Do you want to join our group?"}
-          lastMessageDate={"1 hour ago"}
-          isMuted
-          online
-        />
-        <ChatItem
-          avatar={"https://picsum.photos/seed/picsum/300/300"}
-          username={"Pauline Lynch"}
-          lastMessage={"Do you want to join our group?"}
-          lastMessageDate={"1 hour ago"}
-          isMuted
-          online
-        />
-        <ChatItem
-          avatar={"https://picsum.photos/seed/picsum/300/300"}
-          username={"Pauline Lynch"}
-          lastMessage={"Do you want to join our group?"}
-          lastMessageDate={"1 hour ago"}
-          isMuted
-          online
-        />
-        <ChatItem
-          avatar={"https://picsum.photos/seed/picsum/300/300"}
-          username={"Pauline Lynch"}
-          lastMessage={"Do you want to join our group?"}
-          lastMessageDate={"1 hour ago"}
-          isMuted
-          online
-        />
+        {
+          chats && chats.length
+            ? chats.map((item, index) => (
+              <ChatItem
+                key={index}
+                href={`/chats/${item.id}`}
+                avatar={item.avatar}
+                username={item.username}
+                online={item.online}
+                lastMessage={item.lastMessage}
+                lastMessageDate={item.lastMessageDate}
+              />
+            ))
+            : <EmptyChatState/>
+        }
       </div>
       <Drawer
+        closable={false}
         visible={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
       >

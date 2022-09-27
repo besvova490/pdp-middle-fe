@@ -10,6 +10,8 @@ export interface UserInterestInterface {
 }
 
 export interface EditUserProfileInterface {
+  id: number;
+  online: boolean;
   avatar: string | null;
   thumbnailImage: string | null;
   userName: string;

@@ -16,6 +16,7 @@ export type PostTag = {
 export type PostAuthor = {
   avatar: string;
   userName: string;
+  id?: number;
 };
 
 export interface CommentInterface {

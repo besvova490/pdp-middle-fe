@@ -76,7 +76,7 @@ function Dropdown(props: DropdownInterface) {
   }
 
   const onSingleItemClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, item: DropdownOptionInterface) => {
-    setIsMenuVisible(false);
+    // setIsMenuVisible(false);
                     
     if (item.onClick) {
       e.preventDefault();

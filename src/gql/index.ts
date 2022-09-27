@@ -6,9 +6,10 @@ import Cookies from "universal-cookie";
 
 // helpers
 import auth from "./auth";
+import { GQL_API_URL } from "../helpers/constants";
 
 
-const httpLink = new HttpLink({ uri: process.env.REACT_APP_GQL_URL });
+const httpLink = new HttpLink({ uri: GQL_API_URL });
 const cookies = new Cookies();
 
 // eslint-disable-next-line init-declarations, prefer-const

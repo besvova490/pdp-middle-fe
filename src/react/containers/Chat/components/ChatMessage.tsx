@@ -15,19 +15,20 @@ import "../../../../assets/styles/container/chat/chat-message.scss";
 dayjs.extend(LocalizedFormat)
 
 
-const ChatMessage: FunctionComponent<ChatMessageInterface> = ({ text = "", author, createdAt, isOvn }) => {
+const ChatMessage: FunctionComponent<ChatMessageInterface> = ({ text = "", author, createdAt, isOwn }) => {
 
   const chatClassName = classNames(
     "pdp-chat-message",
     {
-      "pdp-chat-message_ovn": !!isOvn,
+      "pdp-chat-message_ovn": !!isOwn,
     }
   );
 
+  
   return (
     <div className={chatClassName}>
       {
-        !isOvn && author
+        !isOwn && author
           ? (
             <Avatar
               src={author.avatar}
@@ -39,7 +40,7 @@ const ChatMessage: FunctionComponent<ChatMessageInterface> = ({ text = "", autho
       }
       <div className="pdp-chat-message__body">
         <div className="pdp-chat-message__body-main">
-          { !isOvn && author?.userName ? <p className="pdp-chat-message__body-author">{ author.userName }</p> : null }
+          { !isOwn && author?.userName ? <p className="pdp-chat-message__body-author">{ author.userName }</p> : null }
           <p className="pdp-chat-message__body-text">{text}</p>
         </div>
         {

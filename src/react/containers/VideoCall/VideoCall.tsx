@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 // components
 import VideoCallControls from "./components/VideoCallControls";
@@ -23,6 +23,10 @@ function VideoCall() {
     if (isCameraOff && userVideoStream) {
       userVideoStream.getTracks()[0].stop();
     }
+
+    return () => {
+      userVideoStream?.getTracks()[0].stop();
+    };
   }, [isCameraOff]);
 
 
@@ -32,7 +36,7 @@ function VideoCall() {
         <VideoBlock
           isCameraOff={isCameraOff}
           username="My"
-          isOvn
+          isOwn
           ref={el => {
             if (!el) return;
 

@@ -1,0 +1,26 @@
+@import "../theme.scss";
+
+.pdp-chat-page-chat {
+  width: 968px;
+  margin: 20px auto;
+  flex: 1 1 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+
+  &__main {
+    width: 100%;
+    height: auto;
+
+    flex: 1 1 auto;
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    box-shadow: -1px 8px 20px rgb(0 0 0 / 10%);
+  }
+
+  .pdp-chat {
+    height: calc(100vh - 200px);
+  }
+}

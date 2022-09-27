@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { HiArrowLeft, HiDotsVertical } from "react-icons/hi";
 
 // components
@@ -7,6 +8,9 @@ import ChatCard from "./components/ChatCard";
 import ChatMessage from "./components/ChatMessage";
 import ChatInput from "./components/ChatInput";
 
+// helpers
+import { ChatDirectInterface } from "../../../__types__/containers/Chat.type";
+
 
 const CHAT_CONTROLS_OPTIONS = [
   { value: "MuteNotifications", label: "Mute notifications" },
@@ -15,18 +19,18 @@ const CHAT_CONTROLS_OPTIONS = [
 ];
 
 
-function ChatDirect({ onGoBack }: { onGoBack: () => void; }) {
+function ChatDirect({ onGoBack, messages, onMessage, receiver }: ChatDirectInterface) {
 
   return (
     <ChatCard>
       <ChatCard.ChatCardHeader>
-        <div className="pdp-chat__header-go-back">
+        <Link className="pdp-chat__header-go-back" to="/chats">
           <HiArrowLeft className="pdp-chat__header-go-back-icon" onClick={onGoBack}/>
           <Avatar
-            src="https://picsum.photos/seed/picsum/200/200"
-            label="pleazart"
+            src={receiver?.avatar}
+            label={receiver?.userName}
           />
-        </div>
+        </Link>
         <Dropdown
           arrow={false}
           options={CHAT_CONTROLS_OPTIONS}
@@ -38,73 +42,19 @@ function ChatDirect({ onGoBack }: { onGoBack: () => void; }) {
       </ChatCard.ChatCardHeader>
       <div className="pdp-chat__direct">
         <div className="pdp-chat__messages-list">
-          <ChatMessage
-            author={{
-              avatar: "https://picsum.photos/100",
-              userName: "pleazart"
-            }}
-            createdAt={new Date()}
-            text="I have a situation where a date value is being returned from a web"
-          />
-          <ChatMessage
-            author={{
-              avatar: "https://picsum.photos/100",
-              userName: "pleazart"
-            }}
-            createdAt={new Date()}
-            text="I have a situation where a date value is being returned from a web"
-          />
-          <ChatMessage
-            isOvn
-            createdAt={new Date()}
-            text="I have a situation where a date value is being returned from a web"
-          />
-          <ChatMessage
-            author={{
-              avatar: "https://picsum.photos/100",
-              userName: "pleazart"
-            }}
-            createdAt={new Date()}
-            text="I have a situation where a date value is being returned from a web"
-          />
-          <ChatMessage
-            author={{
-              avatar: "https://picsum.photos/100",
-              userName: "pleazart"
-            }}
-            createdAt={new Date()}
-            text="I have a situation where a date value is being returned from a web"
-          />
-          <ChatMessage
-            isOvn
-            createdAt={new Date()}
-            text="I have a situation where a date value is being returned from a web"
-          />
-          <ChatMessage
-            author={{
-              avatar: "https://picsum.photos/100",
-              userName: "pleazart"
-            }}
-            createdAt={new Date()}
-            text="I have a situation where a date value is being returned from a web"
-          />
-          <ChatMessage
-            author={{
-              avatar: "https://picsum.photos/100",
-              userName: "pleazart"
-            }}
-            createdAt={new Date()}
-            text="I have a situation where a date value is being returned from a web"
-          />
-          <ChatMessage
-            isOvn
-            createdAt={new Date()}
-            text="I have a situation where a date value is being returned from a web"
-          />
+          {
+            messages.map((item, index) => (
+              <ChatMessage
+                key={index}
+                { ...item }
+              />
+            ))
+          }
         </div>
         <ChatInput
           fullWidth
           className="pdp-chat__messages-list-input"
+          onSend={e => onMessage && onMessage(e)}
         />
       </div>
     </ChatCard>

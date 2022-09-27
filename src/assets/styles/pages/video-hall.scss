@@ -1,0 +1,37 @@
+.pdp-chat-video-page {
+  height: 100vh;
+  margin: 100px auto;
+  
+  display: grid;
+  grid-template-columns: 600px 300px;
+  grid-template-rows: 500px;
+  justify-content: center;
+
+  grid-gap: 26px;
+
+  &__controls {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    grid-gap: 26px;
+  }
+
+  &__controls-heder {
+    font-size: 26px;
+  }
+
+  &__controls-description {
+    opacity: 0.7;
+  }
+
+  &__controls-btn-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-gap: 26px;
+  }
+}

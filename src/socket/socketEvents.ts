@@ -1,0 +1,20 @@
+// socket events
+
+// chat
+export const SOCKET_USERS = "USERS";
+export const SOCKET_PRIVATE_MESSAGE = "PRIVATE_MESSAGE";
+export const SOCKET_USER_IS_TYPING = "USER_IS_TYPING";
+
+// auth
+export const SOCKET_NEW_USER_CONNECTED = "USER_CONNECTED";
+export const SOCKET_USER_DISCONNECTED = "USER_DISCONNECTED";
+
+// base
+export const SOCKET_CONNECTION = "CONNECTION";
+export const SOCKET_DISCONNECT = "DISCONNECT";
+export const SOCKET_SESSION_STARTED = "SESSION";
+export const SOCKET_CONNECTION_ERROR = "CONNECTION_ERROR";
+
+// webRTC
+export const PRE_OFFER = "PRE_OFFER";
+export const JOIN_TO_THE_CALL = "JOIN_TO_THE_CALL";

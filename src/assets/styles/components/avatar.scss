@@ -16,16 +16,16 @@
     justify-content: center;
     align-items: center;
 
-    border-radius: 50%;
-    border: 2px solid $white-color-01;
-    background-color: $gray-color-05;
-
-    overflow: hidden;
+    position: relative;
   }
 
   &__image-tag {
     width: 100%;
     height: 100%;
+    border-radius: 50%;
+
+    border: 2px solid $white-color-01;
+    background-color: $gray-color-05;
 
     object-fit: cover;
     object-position: center center;
@@ -33,7 +33,7 @@
 
   &__empty {
     .pdp-chat-avatar__image-tag {
-      width: 20px;
+      width: 40px;
       height: auto;
     }
   }
@@ -79,5 +79,21 @@
     letter-spacing: 0.02em;
 
     color: $dark-color-01;
+  }
+
+  &__online-inner {
+    position: absolute;
+
+    top: 4px;
+    right: 0;
+
+    width: 10px;
+    height: 10px;
+    padding: 2px;
+
+    border-radius: 50%;
+    border: 1px solid $white-color-01;
+
+    background-color: $success-color-01;
   }
 }

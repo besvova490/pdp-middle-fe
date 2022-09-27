@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { useMutation } from "@apollo/client";
 import { GrHomeRounded, GrMapLocation, GrNotification } from "react-icons/gr";
 import { BsChat } from "react-icons/bs";
+import { HiOutlineVideoCamera } from "react-icons/hi";
 import { CgProfile } from "react-icons/cg";
 import { VscSettingsGear } from "react-icons/vsc";
 import { RiLoginBoxLine } from "react-icons/ri";
@@ -32,6 +33,7 @@ export const HEADER_NAVIGATION_LINKS = [
   { icon: <GrNotification/>, label: "Notifications", href: "/notifications" },
   { icon: <GrMapLocation/>, label: "Map", href: "/map" },
   { icon: <BsChat/>, label: "Chat", href: "/chats" },
+  { icon: <HiOutlineVideoCamera/>, label: "Call", href: "/video-meet" },
 ];
 
 function Header({ className = "", ...props }:HeaderInterface) {
@@ -80,7 +82,11 @@ function Header({ className = "", ...props }:HeaderInterface) {
       }
       <BaseHeader.HeaderProfile>
         <Dropdown options={HEADER_PROFILE_OPTIONS} placement="bottomLeft">
-          <Avatar label={user?.userName} src={user?.avatar || ""}/>
+          <Avatar
+            label={user?.userName}
+            src={user?.avatar || ""}
+            online={user?.online}
+          />
         </Dropdown>
       </BaseHeader.HeaderProfile>
       <Drawer

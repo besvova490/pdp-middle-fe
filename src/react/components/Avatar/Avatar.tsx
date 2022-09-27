@@ -8,7 +8,8 @@ const defaultUserAvatar = require("../../../assets/images/default-user-avatar.pn
 import "../../../assets/styles/components/avatar.scss";
 
 
-function Avatar({ alt, src, label, labelPosition = "left", size = "middle", className = "", ...rest }: AvatarInterface) {
+function Avatar(props: AvatarInterface) {
+  const { alt, src, label, labelPosition = "left", size = "middle", className = "", online, ...rest } = props;
 
   const avatarClassName = classNames(
     "pdp-chat-avatar",
@@ -32,6 +33,11 @@ function Avatar({ alt, src, label, labelPosition = "left", size = "middle", clas
           onError={e => e.currentTarget.src = defaultUserAvatar}
           className="pdp-chat-avatar__image-tag"
         />
+        {
+          online
+            ? <span className="pdp-chat-avatar__online-inner"/>
+            : null
+        }
       </div>
       {
         label

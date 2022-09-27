@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+import { Link } from "react-router-dom";
 import { IoIosNotificationsOff } from "react-icons/io";
 import { HiDotsVertical } from "react-icons/hi";
 
@@ -5,13 +7,14 @@ import { HiDotsVertical } from "react-icons/hi";
 import Dropdown from "../../../components/Dropdown";
 
 // helpers
-import { ChatItemInterface } from "../../../../__types__/containers/Chat.type";
+import { ChatItemComponentInterface } from "../../../../__types__/containers/Chat.type";
 
 // assets
+const defaultUserAvatar = require("../../../../assets/images/default-user-avatar.png");
 import "../../../../assets/styles/container/chat/chat-item.scss";
 
 
-function ChatItem(props: ChatItemInterface) {
+function ChatItem(props: ChatItemComponentInterface) {
   const {
     username = "",
     avatar,
@@ -19,20 +22,15 @@ function ChatItem(props: ChatItemInterface) {
     lastMessageDate,
     online,
     isMuted,
-    onMute,
-    onRemoveChat,
+    options,
+    href = "#",
   } = props;
-
-  const CHAT_CONTROLS_OPTIONS = [
-    { value: "MuteNotifications", label: "Mute notifications", onClick: () => onMute && onMute() },
-    { value: "RemoveChat", label: "Remove chat", onClick: () => onRemoveChat && onRemoveChat() },
-  ];
 
 
   return (
-    <div className="pdp-chat-item">
+    <Link to={href} className="pdp-chat-item">
       <div className="pdp-chat-item__avatar">
-        <img className="pdp-chat-item__avatar-image" alt={`avatar for ${username}`} src={avatar}/>
+        <img className="pdp-chat-item__avatar-image" alt={`avatar for ${username}`} src={avatar || defaultUserAvatar}/>
       </div>
       <div className="pdp-chat-item__info">
         <span className="pdp-chat-item__info-username">
@@ -49,15 +47,21 @@ function ChatItem(props: ChatItemInterface) {
           }
         </span>
       </div>
-      <Dropdown
-        arrow={false}
-        options={CHAT_CONTROLS_OPTIONS}
-        className="pdp-chat-item__controls"
-        placement="bottomRight"
-      >
-        <HiDotsVertical className="pdp-chat-item__controls-icon"/>
-      </Dropdown>
-    </div>
+      {
+        options && options.length
+          ? (
+            <Dropdown
+              arrow={false}
+              options={options}
+              className="pdp-chat-item__controls"
+              placement="bottomRight"
+            >
+              <HiDotsVertical className="pdp-chat-item__controls-icon"/>
+            </Dropdown>
+          )
+          : null
+      }
+    </Link>
   );
 }
 

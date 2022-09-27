@@ -4,6 +4,7 @@ const profile = {
   PROFILE_QUERY: gql `
     query Profile {
       profile {
+        id
         email
         avatar
         thumbnailImage
@@ -12,9 +13,9 @@ const profile = {
         description
         address
         phone
+        online
         createdAt
         updatedAt
-        id
       }
     }
   `,

@@ -10,6 +10,8 @@
   align-items: flex-start;
   justify-content: flex-start;
 
+  width: 100%;
+
   grid-gap: 8px;
 
   &__body-main {
@@ -46,8 +48,10 @@
     margin-bottom: 18px;
   }
 
-  &_ovn .pdp-chat-message {
-    &__body-main {
+  &_ovn.pdp-chat-message {
+    justify-content: flex-end;
+
+    .pdp-chat-message__body-main {
       color: $white-color-01;
       background: $secondary-color-01;
       border-radius: 16px 16px 0px 16px;

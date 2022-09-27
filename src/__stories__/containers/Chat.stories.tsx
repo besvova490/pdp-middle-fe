@@ -21,7 +21,7 @@ export default {
 const Template: ComponentStory<typeof ChatComponent> = () => <ChatComponent/>;
 const ChatItemTemplate: ComponentStory<typeof ChatItemComponent> = args => <ChatItemComponent { ...args }/>;
 const StartNewChatTemplate: ComponentStory<typeof StartNewChatComponent> = () => <StartNewChatComponent onGoBack={action("onGoBack")}/>;
-const ChatDirectTemplate: ComponentStory<typeof ChatDirectComponent> = () => <ChatDirectComponent onGoBack={action("onGoBack")}/>;
+const ChatDirectTemplate: ComponentStory<typeof ChatDirectComponent> = args => <ChatDirectComponent {...args} onGoBack={action("onGoBack")}/>;
 const ChatMessageTemplate: ComponentStory<typeof ChatMessageComponent> = args => <ChatMessageComponent { ...args }/>;
 const ChatInputTemplate: ComponentStory<typeof ChatInputComponent> = args => <ChatInputComponent { ...args } onSend={action("onSend")}/>;
 
@@ -47,7 +47,7 @@ ChatMessage.args = {
   },
   createdAt: new Date(),
   text: "I have a situation where a date value is being returned from a web",
-  isOvn: false,
+  isOwn: false,
 }
 
 export const ChatItem = ChatItemTemplate.bind({});
