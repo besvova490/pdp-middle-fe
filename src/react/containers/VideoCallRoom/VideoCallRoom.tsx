@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 // components
 import VideoCallControls from "../VideoCall/components/VideoCallControls";
@@ -18,10 +18,14 @@ function VideoCallRoom({ stream }: { stream: MediaStream | null }) {
   
   const { id } = useParams();
   const { user } = useUserProfile();
+  const history = useNavigate();
+
   const guest = { id: user?.id, userName: user?.userName, avatar: user?.avatar };
 
   peerConnection.onicecandidate = (e) => {
     if (e.candidate) {
+      console.log("onicecandidate", e);
+
       socketClient.emit(
         JOIN_TO_THE_CALL,
         {
@@ -39,12 +43,8 @@ function VideoCallRoom({ stream }: { stream: MediaStream | null }) {
   }
 
   peerConnection.ontrack = (e) => {
-    console.log("ontrack", e);
-
-    const remoteMediaStream = new MediaStream();
-    remoteMediaStream.addTrack(e.track);
     
-    setRemoteTracks([...remoteTracks, remoteMediaStream])
+    setRemoteTracks(e.streams as MediaStream[])
   }
 
   const handlerOffer = async (data: any) => {
@@ -86,14 +86,24 @@ function VideoCallRoom({ stream }: { stream: MediaStream | null }) {
     socketClient.on(JOIN_TO_THE_CALL, handlerOffer);
   }
 
+  const closeConnection = () => {
+    peerConnection.close();
+
+    if (stream) {
+      stream.getVideoTracks()[0].enabled = true;
+      stream.getAudioTracks()[0].enabled = true;
+    }
+  };
+
   useEffect(() => {
     if (!user?.id || !id || !stream) return;
 
     initVideoRoom();
 
     return () => {
+      closeConnection();
       socketClient.off(JOIN_TO_THE_CALL);
-    };
+    }
   }, [user, stream]);
 
 
@@ -115,6 +125,7 @@ function VideoCallRoom({ stream }: { stream: MediaStream | null }) {
             <VideoBlock
               key={index}
               isCameraOff={false}
+              isMuted={process.env.NODE_ENV === "development"}
               username="flat_six_aircooled"
               ref={el => {
                 if (!el) return;
@@ -129,7 +140,10 @@ function VideoCallRoom({ stream }: { stream: MediaStream | null }) {
         isCameraOff={isCameraOff}
         onCameraToggle={() => setIsCameraOff(!isCameraOff)}
         onMicrophoneToggle={() => null}
-        onLeave={() => null}
+        onLeave={() => {
+          closeConnection();
+          history("/");
+        }}
       />
     </div>
   );

@@ -6,7 +6,7 @@ import { VideoCallBlockInterface } from "../../../../__types__/containers/VideoC
 
 
 const VideoBlock = React.forwardRef<HTMLVideoElement, VideoCallBlockInterface>((props, ref) => {
-  const { username, isCameraOff = true, isOwn } = props;
+  const { username, isCameraOff = true, isOwn, isMuted } = props;
 
 
   return (
@@ -23,7 +23,7 @@ const VideoBlock = React.forwardRef<HTMLVideoElement, VideoCallBlockInterface>((
               ref={ref}
               autoPlay
               id={username}
-              muted={isOwn}
+              muted={!!isOwn || isMuted}
               className="pdp-chat-video-call__video-block-tag"
             />
           )

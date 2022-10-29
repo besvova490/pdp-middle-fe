@@ -17,11 +17,9 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <ApolloProvider client={gqlClient}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ApolloProvider>
-  </React.StrictMode>
+  <ApolloProvider client={gqlClient}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ApolloProvider>
 );

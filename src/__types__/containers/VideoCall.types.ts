@@ -5,6 +5,7 @@ export interface VideoCallBlockInterface extends DetailedHTMLProps<HTMLAttribute
   username?: string;
   isCameraOff?: boolean;
   isOwn?: boolean;
+  isMuted?: boolean;
 }
 
 export interface VideoCallControlsInterface extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
