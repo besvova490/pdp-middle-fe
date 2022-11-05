@@ -1,5 +1,5 @@
 
-FROM --platform=linux/amd64 267973720966.dkr.ecr.eu-west-3.amazonaws.com/pdp-middle:node-14-alpine
+FROM public.ecr.aws/docker/library/node:14
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
