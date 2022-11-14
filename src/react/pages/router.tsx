@@ -10,6 +10,7 @@ import Preloader from "../components/Preloader";
 const HomePage = React.lazy(() => import("./HomePage"));
 const ProfilePage = React.lazy(() => import("./ProfilePage"));
 const LoginPage = React.lazy(() => import("./LoginPage"));
+const ContactUsPage = React.lazy(() => import("./ContactUsPage"));
 const SignUpPage = React.lazy(() => import("./SignUpPage"));
 const ChatsPage = React.lazy(() => import("./ChatsPage"));
 const RestorePasswordPage = React.lazy(() => import("./RestorePasswordPage"));
@@ -31,6 +32,7 @@ function Router() {
         <Route path="/video-meet" element={<PrivateRoute element={VideoMeet}/>}/>
         <Route path="/video-meet/:id" element={<PrivateRoute element={VideoMeet}/>}/>
 
+        <Route path="/contact-us" element={<AuthRoute element={ContactUsPage}/>}/>
         <Route path="/auth/login" element={<AuthRoute element={LoginPage}/>}/>
         <Route path="/auth/sign-up" element={<AuthRoute element={SignUpPage}/>}/>
         <Route path="/auth/reset-password" element={<AuthRoute element={ResetPasswordPage}/>}/>

@@ -1,16 +1,26 @@
-import { ApolloClient, InMemoryCache, NormalizedCacheObject } from "@apollo/client";
+import { ApolloClient, InMemoryCache, NormalizedCacheObject, split } from "@apollo/client";
 import { onError } from "apollo-link-error";
 import { fromPromise, ApolloLink } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
+import { getMainDefinition } from "@apollo/client/utilities";
+import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
+import { createClient } from "graphql-ws";
 import Cookies from "universal-cookie";
 
 // helpers
 import auth from "./auth";
-import { GQL_API_URL } from "../helpers/constants";
+import { GQL_API_URL, GQL_SUBSCRIPTION_API_URL } from "../helpers/constants";
 
+
+const cookies = new Cookies();
 
 const httpLink = new HttpLink({ uri: GQL_API_URL });
-const cookies = new Cookies();
+const wsLink = new GraphQLWsLink(createClient({
+  url: GQL_SUBSCRIPTION_API_URL,
+  connectionParams: {
+    Authorization: `JWT ${cookies.get("accessToken")}`
+  }
+}));
 
 // eslint-disable-next-line init-declarations, prefer-const
 let client: ApolloClient<NormalizedCacheObject>;
@@ -40,7 +50,7 @@ const getNewToken = async () => {
 
 const errorLink = onError(
   ({ networkError, operation, forward }) => {
-    if (networkError) {
+    if (networkError && (networkError as any).result) {
       for (const err of (networkError as any).result.errors) {
         switch (err.extensions.code) {
           case "UNAUTHENTICATED":
@@ -83,9 +93,22 @@ const authLink = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
+const splitLink = split(
+  ({ query }) => {
+    const definition = getMainDefinition(query);
+    
+    return (
+      definition.kind === "OperationDefinition" &&
+      definition.operation === "subscription"
+    );
+  },
+  wsLink,
+  httpLink as any,
+);
+
 client = new ApolloClient({
   cache: new InMemoryCache({}),
-  link: ApolloLink.from([errorLink, authLink, httpLink]) as any,
+  link: ApolloLink.from([errorLink, authLink, splitLink as any]) as any,
 });
 
 

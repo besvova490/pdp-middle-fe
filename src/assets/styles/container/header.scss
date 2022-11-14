@@ -70,10 +70,32 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 
     grid-gap: 5px;
 
     color: $dark-color-02;
+  }
+
+  &__menu-item-notification {
+    position: absolute;
+    top: -5px;
+    right: 25px;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    border-radius: 50%;
+    border: 1px solid $white-color-01;
+    background-color: $success-color-01;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    font-size: 10px;
+    line-height: 12px;
+    color: $white-color-01;
   }
 
   &__menu-item-icon {

@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { useMutation } from "@apollo/client";
+import { useMutation, useSubscription } from "@apollo/client";
 import { GrHomeRounded, GrMapLocation, GrNotification } from "react-icons/gr";
 import { BsChat } from "react-icons/bs";
 import { HiOutlineVideoCamera } from "react-icons/hi";
@@ -22,6 +22,7 @@ import BaseHeader from "./components/BaseHeader";
 import { DeepPartial } from "../../../__types__/base.type";
 import { EditUserProfileInterface } from "../../../__types__/containers/EditUserProfile.types";
 import profile from "../../../gql/profile";
+import notifications from "../../../gql/notifications";
 import { useUserProfile } from "../../../context/UserProfileContext";
 import HeaderInterface from "../../../__types__/containers/Header.type";
 
@@ -38,13 +39,23 @@ export const HEADER_NAVIGATION_LINKS = [
 
 function Header({ className = "", ...props }:HeaderInterface) {
   const [isSettingOpen, setIsSettingOpen] = useState(false);
+  const [notificationsList, setNotificationsList] = useState<null | Array<unknown>>(null);
 
   const { user } = useUserProfile();
+  const { data: notificationData } = useSubscription(
+    notifications.COMMENTS_SUBSCRIPTION,
+  );
 
   const [updateProfile] = useMutation(profile.PROFILE_MUTATION, {
     refetchQueries: () => [{ query: profile.PROFILE_QUERY }],
     onError: e => console.log(e)
   });
+
+  useEffect(() => {
+    if (notificationData) {
+      setNotificationsList(state => [...(state || []), notificationData]);
+    }
+  }, [JSON.stringify(notificationData)]);
 
   const HEADER_PROFILE_OPTIONS = [
     {
@@ -77,7 +88,11 @@ function Header({ className = "", ...props }:HeaderInterface) {
     >
       {
         HEADER_NAVIGATION_LINKS.map((item, index) => (
-          <HeaderMenuLink { ...item } key={`${index}-${item.label}`}/>
+          <HeaderMenuLink
+            { ...item }
+            notification={item.href === "/notifications" ? notificationsList?.length : 0}
+            key={`${index}-${item.label}`}
+          />
         ))
       }
       <BaseHeader.HeaderProfile>

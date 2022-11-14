@@ -11,4 +11,5 @@ export interface HeaderLinkInterface {
   label?: ReactNode;
   href: string;
   disabled?: boolean;
+  notification?: number;
 }
