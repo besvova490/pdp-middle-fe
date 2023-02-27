@@ -43,7 +43,6 @@ function VideoCallRoom({ stream }: { stream: MediaStream | null }) {
   }
 
   peerConnection.ontrack = (e) => {
-    
     setRemoteTracks(e.streams as MediaStream[])
   }
 
